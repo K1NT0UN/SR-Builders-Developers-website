@@ -18,6 +18,65 @@ const entities = [
   { name: 'SM Infra Developers', segment: 'Residential', active: false },
 ]
 
+const leadership = [
+  {
+    initials: 'VR',
+    role: 'Founder & Promoter',
+    name: 'Mr. Vasu Raavi',
+    tagline: 'Vision · Strategy · Legacy',
+    qualifications: null,
+    bio: 'Starting from humble beginnings in Nellore, Andhra Pradesh, Mr. Vasu Raavi built the SRSM Group from the ground up over more than two decades. His hands-on involvement — from land acquisition to project delivery — has shaped the Group\'s culture of quality and integrity.',
+  },
+  {
+    initials: 'R',
+    role: 'Co-Director',
+    name: 'Rabani',
+    tagline: 'Operations · Oversight',
+    qualifications: null,
+    bio: '',
+  },
+  {
+    initials: 'YR',
+    role: 'Co-Director',
+    name: 'Yashwanth Raavi',
+    tagline: 'Projects · Development',
+    qualifications: '[Qualifications to be added]',
+    bio: '',
+  },
+  {
+    initials: 'J',
+    role: 'Co-Director',
+    name: 'Jagan',
+    tagline: 'Finance · Liaison',
+    qualifications: null,
+    bio: '',
+  },
+  {
+    initials: 'RRC',
+    role: 'Director',
+    name: 'Raavi Rishi Chowdary',
+    tagline: 'Strategy · Investments',
+    qualifications: '[Qualifications to be added]',
+    bio: '',
+  },
+  {
+    initials: 'MR',
+    role: 'In-house Architect',
+    name: 'Manaswitha Raavi',
+    tagline: 'Design · Planning',
+    qualifications: '[Qualifications to be added]',
+    bio: '',
+  },
+]
+
+const team = [
+  { initials: 'Y', name: 'Yugandhar', role: "Founder's PA & Manager" },
+  { initials: 'S', name: 'Sudhakar', role: 'Head of Supervisors' },
+  { initials: 'SK', name: 'Sivaram Krishna', role: 'Site Engineer' },
+  { initials: 'H', name: 'Harsha', role: 'Office Management' },
+  { initials: 'CR', name: 'Chidvilas Raavi', role: 'Corporate & Digital Affairs Coordinator' },
+]
+
 export default function AboutPage() {
   return (
     <>
@@ -48,8 +107,7 @@ export default function AboutPage() {
             </p>
             <p className="text-charcoal-light leading-relaxed">
               The Group has built its reputation on quality construction, timely delivery, and a customer-first philosophy.
-              With a strong pipeline of upcoming projects in Borampet, Nagole, and Medchal, SRSM Group is poised for its
-              next phase of significant growth.
+              With a strong pipeline of upcoming projects across Hyderabad, SRSM Group is poised for its next phase of significant growth.
             </p>
           </FadeInView>
 
@@ -114,7 +172,7 @@ export default function AboutPage() {
 
       {/* Leadership */}
       <section id="leadership" className="bg-parchment py-24 px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <FadeInView>
             <div className="text-center mb-14">
               <p className="text-xs tracking-[0.5em] uppercase text-gold mb-3">The People Behind</p>
@@ -122,37 +180,60 @@ export default function AboutPage() {
             </div>
           </FadeInView>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Promoter */}
-            <FadeInView delay={0} className="md:col-span-1">
-              <div className="bg-linen border border-gold/20 p-8">
-                <div className="w-14 h-14 rounded-full bg-forest/10 flex items-center justify-center mb-5">
-                  <span className="font-serif text-2xl text-forest">VR</span>
-                </div>
-                <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-1">Founder & Promoter</p>
-                <h3 className="font-serif text-2xl text-forest mb-2">Mr. Vasu Raavi</h3>
-                <p className="text-xs text-charcoal-light/60 uppercase tracking-wider mb-4">Vision · Strategy · Legacy</p>
-                <p className="text-charcoal-light text-sm leading-relaxed">
-                  Starting from humble beginnings in Nellore, Andhra Pradesh, Mr. Vasu Raavi built the SRSM Group from
-                  the ground up over more than two decades. His hands-on involvement — from land acquisition to project
-                  delivery — has shaped the Group&apos;s culture of quality and integrity.
-                </p>
-              </div>
-            </FadeInView>
-
-            {/* Co-Directors placeholder */}
-            {[
-              { initials: '—', role: 'Co-Director', tagline: 'Operations · Execution' },
-              { initials: '—', role: 'Co-Director', tagline: 'Sales · Customer Relations' },
-            ].map((person, i) => (
-              <FadeInView key={i} delay={(i + 1) * 0.1}>
-                <div className="bg-linen border border-gold/10 p-8 opacity-60">
-                  <div className="w-14 h-14 rounded-full bg-forest/5 flex items-center justify-center mb-5">
-                    <span className="font-serif text-2xl text-forest/40">{person.initials}</span>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {leadership.map((person, i) => (
+              <FadeInView key={i} delay={i * 0.07}>
+                <div className="bg-linen border border-gold/20 p-8 flex flex-col h-full">
+                  {/* Placeholder photo */}
+                  <div className="w-20 h-20 rounded-full bg-forest/10 border-2 border-gold/20 flex items-center justify-center mb-5 self-start">
+                    <span className="font-serif text-xl text-forest font-semibold">{person.initials}</span>
                   </div>
-                  <p className="text-[10px] tracking-[0.4em] uppercase text-gold/60 mb-1">{person.role}</p>
-                  <h3 className="font-serif text-xl text-forest/50 mb-2">To be announced</h3>
-                  <p className="text-xs text-charcoal-light/40 uppercase tracking-wider">{person.tagline}</p>
+
+                  <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-1">{person.role}</p>
+                  <h3 className="font-serif text-2xl text-forest mb-1">{person.name}</h3>
+                  <p className="text-xs text-charcoal-light/50 uppercase tracking-wider mb-4">{person.tagline}</p>
+
+                  {/* Qualifications */}
+                  {person.qualifications !== null && (
+                    <p className="text-xs text-gold/70 italic mb-4 border-l-2 border-gold/20 pl-3">
+                      {person.qualifications}
+                    </p>
+                  )}
+
+                  {/* Bio / quote space */}
+                  <div className="mt-auto pt-4 border-t border-gold/10">
+                    {person.bio ? (
+                      <p className="text-charcoal-light text-sm leading-relaxed">{person.bio}</p>
+                    ) : (
+                      <p className="text-charcoal-light/30 text-sm italic">[Quote or brief bio to be added]</p>
+                    )}
+                  </div>
+                </div>
+              </FadeInView>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="bg-forest py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <FadeInView>
+            <div className="text-center mb-14">
+              <p className="text-xs tracking-[0.5em] uppercase text-gold/70 mb-3">Our People</p>
+              <h2 className="font-serif text-4xl text-parchment">The Team</h2>
+            </div>
+          </FadeInView>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+            {team.map((member, i) => (
+              <FadeInView key={i} delay={i * 0.06}>
+                <div className="bg-forest-light border border-parchment/10 p-6 text-center">
+                  <div className="w-14 h-14 rounded-full bg-parchment/10 border border-gold/20 flex items-center justify-center mx-auto mb-4">
+                    <span className="font-serif text-lg text-gold">{member.initials}</span>
+                  </div>
+                  <h4 className="font-serif text-lg text-parchment leading-snug mb-1">{member.name}</h4>
+                  <p className="text-xs text-parchment/50 leading-snug">{member.role}</p>
                 </div>
               </FadeInView>
             ))}
