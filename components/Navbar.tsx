@@ -36,7 +36,7 @@ export default function Navbar() {
             alt="SRSM Group"
             width={1536}
             height={1024}
-            className="h-[68px] w-auto object-contain"
+            className="h-[92px] w-auto object-contain"
             priority
           />
         </Link>
