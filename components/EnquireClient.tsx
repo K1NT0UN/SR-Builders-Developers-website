@@ -67,12 +67,12 @@ export default function EnquireClient() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState<FormType | null>(null)
   const [error, setError] = useState('')
-  const supabase = createClient()
 
   const handleQuick = async (e: FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setError('')
+    const supabase = createClient()
     const { error: err } = await supabase.from('enquiries').insert({
       ...quickForm,
       type: 'quick',
@@ -87,6 +87,7 @@ export default function EnquireClient() {
     e.preventDefault()
     setLoading(true)
     setError('')
+    const supabase = createClient()
     const { error: err } = await supabase.from('enquiries').insert({
       ...visitForm,
       type: 'site_visit',
