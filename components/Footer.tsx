@@ -51,7 +51,7 @@ export default function Footer() {
             </address>
             <div className="mt-6">
               <p className="text-xs tracking-widest uppercase text-parchment/40">Flagship Project</p>
-              <Link href="/projects" className="font-serif text-xl text-parchment hover:text-gold transition-colors duration-200">
+              <Link href="/projects/nisarga" className="font-serif text-xl text-parchment hover:text-gold transition-colors duration-200">
                 Nisarga — Kollur
               </Link>
             </div>

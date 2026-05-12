@@ -64,9 +64,14 @@ export default function ProjectsTabs({ current, pipeline, completed }: Props) {
                     {p.targetCompletion && (
                       <p className="text-xs text-charcoal-light/60">{p.targetCompletion}</p>
                     )}
-                    <Link href="/enquire" className="ml-auto text-forest text-xs tracking-widest uppercase border-b border-gold pb-0.5 hover:text-gold transition-colors">
-                      Enquire →
-                    </Link>
+                    <div className="ml-auto flex gap-5">
+                      <Link href="/projects/nisarga" className="text-forest text-xs tracking-widest uppercase border-b border-forest/30 pb-0.5 hover:text-gold hover:border-gold transition-colors">
+                        View Project →
+                      </Link>
+                      <Link href="/enquire" className="text-forest text-xs tracking-widest uppercase border-b border-gold pb-0.5 hover:text-gold transition-colors">
+                        Enquire →
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}
