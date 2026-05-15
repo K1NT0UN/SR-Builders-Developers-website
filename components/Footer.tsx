@@ -8,13 +8,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <div className="mb-5">
+            <div className="mb-5 overflow-visible">
               <Image
                 src="/images/sr-builders-logo-light.png"
                 alt="SR Builders and Developers"
-                width={1331}
-                height={282}
-                className="h-16 w-auto object-contain"
+                width={2000}
+                height={1545}
+                className="h-[192px] w-auto object-contain"
               />
             </div>
             <p className="text-sm leading-relaxed text-parchment/60 max-w-xs">

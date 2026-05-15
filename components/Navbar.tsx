@@ -39,9 +39,9 @@ export default function Navbar() {
           <Image
             src="/images/sr-builders-logo.png"
             alt="SR Builders and Developers"
-            width={1331}
-            height={282}
-            className="h-10 w-auto object-contain drop-shadow-sm"
+            width={2000}
+            height={1545}
+            className="h-14 w-auto object-contain drop-shadow-sm"
             priority
           />
         </Link>
