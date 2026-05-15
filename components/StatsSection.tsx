@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 const stats = [
   { value: 25, suffix: '+', label: 'Years of Experience' },
   { value: 24, suffix: '+', label: 'Completed Projects' },
-  { value: 6, suffix: '', label: 'Active Entities' },
+  { value: 3, suffix: '', label: 'Active Entities' },
   { value: 30, suffix: '+', label: 'Full-Time Employees' },
 ]
 

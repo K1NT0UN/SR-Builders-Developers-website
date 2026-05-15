@@ -18,15 +18,24 @@ export const currentProjects: Project[] = [
     name: 'Nisarga',
     location: 'Kollur, Hyderabad',
     status: 'ONGOING',
-    type: 'Integrated Township — Villas + Apartments',
+    type: 'Integrated Township — Villas',
     description:
-      'A landmark integrated township offering premium villas and apartments in Kollur, one of Hyderabad\'s fastest-growing corridors. RERA registration underway.',
-    targetCompletion: 'Villas: End of 2028 · Apartments: End of 2029',
+      'A landmark gated township offering premium 4 & 5 BHK forestscape villas on 17+ acres in Kollur, one of Hyderabad\'s fastest-growing corridors. 50+ amenities, 2 clubhouses. RERA: PO22000007723.',
+    targetCompletion: 'Villas: End of 2028',
     highlight: true,
   },
 ]
 
 export const pipelineProjects: Project[] = [
+  {
+    company: 'SR Builders and Developers',
+    name: 'Nisarga Apartments',
+    location: 'Kollur, Hyderabad',
+    status: 'PIPELINE',
+    type: 'Residential',
+    description: 'Premium apartment residences within the Nisarga township. Name to be announced.',
+    targetCompletion: 'End of 2029',
+  },
   { company: 'SRSM Group', name: 'Borampet Villas', location: 'Borampet, Hyderabad', status: 'PIPELINE', type: 'Residential', description: '~30 Acres of residential villa development.' },
   { company: 'SRSM Group', name: 'Nagole Villas', location: 'Nagole, Hyderabad', status: 'PIPELINE', type: 'Residential', description: '~10 Acres of residential villa development.' },
   { company: 'SRSM Group', name: 'Medchal Commercial', location: 'Medchal, Hyderabad', status: 'PIPELINE', type: 'Commercial', description: '~1+ Acre commercial development.' },

@@ -9,30 +9,7 @@ export default function HomePage() {
     <>
       <HeroSection />
 
-      {/* Mission Statement */}
-      <section className="bg-parchment py-24 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <FadeInView>
-            <p className="text-xs tracking-[0.5em] uppercase text-gold mb-6">Our Purpose</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-forest leading-snug mb-8">
-              Built on Trust. <span className="font-light text-gold">Delivered with Excellence.</span>
-            </h2>
-            <p className="text-charcoal-light leading-relaxed text-base md:text-lg mb-10">
-              For over 25 years, SRSM Group has built homes that stand as testaments to craftsmanship and integrity.
-              Debt-free, in-house engineered, and community-focused — we don&apos;t just construct buildings,
-              we shape neighbourhoods.
-            </p>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 text-forest text-sm tracking-widest uppercase font-semibold border-b border-gold pb-0.5 hover:text-gold transition-colors duration-200"
-            >
-              Our Story <span className="text-gold">→</span>
-            </Link>
-          </FadeInView>
-        </div>
-      </section>
-
-      {/* Current Projects */}
+      {/* Flagship Project */}
       <section className="bg-linen py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <FadeInView>
@@ -44,12 +21,12 @@ export default function HomePage() {
 
           {currentProjects.map((project, i) => (
             <FadeInView key={i} delay={0.1} className="max-w-4xl mx-auto">
-              <div className="bg-parchment border border-gold/20 p-10 md:p-14 relative overflow-hidden">
+              <div className="bg-parchment border border-gold/20 p-10 md:p-14 relative overflow-hidden group hover:border-gold/50 hover:shadow-xl transition-all duration-300">
                 <div className="absolute top-0 left-0 w-1 h-full bg-gold" />
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                   <div>
-                    <p className="text-xs tracking-[0.4em] uppercase text-gold/70 mb-2">{project.company}</p>
-                    <h3 className="font-serif text-4xl md:text-5xl text-forest mb-3 font-light">{project.name}</h3>
+                    <p className="text-xs tracking-[0.4em] uppercase text-forest/70 font-semibold mb-2">{project.company}</p>
+                    <h3 className="font-serif text-4xl md:text-5xl text-forest font-bold mb-3">{project.name}</h3>
                     <p className="text-charcoal-light text-sm mb-4">{project.location} · {project.type}</p>
                     <p className="text-charcoal-light leading-relaxed max-w-xl">{project.description}</p>
                   </div>
@@ -62,12 +39,18 @@ export default function HomePage() {
                     )}
                   </div>
                 </div>
-                <div className="mt-10 pt-6 border-t border-gold/10">
+                <div className="mt-10 pt-6 border-t border-gold/10 flex flex-wrap gap-6 items-center">
+                  <Link
+                    href="/projects/nisarga"
+                    className="text-forest text-sm tracking-widest uppercase font-bold border-b-2 border-gold pb-0.5 hover:text-gold transition-colors"
+                  >
+                    View Project →
+                  </Link>
                   <Link
                     href="/projects"
-                    className="text-forest text-sm tracking-widest uppercase font-semibold border-b border-gold pb-0.5 hover:text-gold transition-colors"
+                    className="text-charcoal-light/60 text-sm tracking-widest uppercase border-b border-charcoal/20 pb-0.5 hover:text-forest hover:border-forest transition-colors"
                   >
-                    View All Projects →
+                    All Projects →
                   </Link>
                 </div>
               </div>

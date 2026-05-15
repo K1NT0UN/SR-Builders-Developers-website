@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import FadeInView from '@/components/FadeInView'
 
 const coreStrengths = [
@@ -13,9 +16,6 @@ const entities = [
   { name: 'SR Builders and Developers', segment: 'Residential & Villas', active: true },
   { name: 'SM Builders', segment: 'Residential & Commercial', active: true },
   { name: 'SM Builders and Developers', segment: 'Residential', active: true },
-  { name: 'SM Projects', segment: 'Residential & Mixed-Use', active: true },
-  { name: 'SM Constructions', segment: 'Residential & Commercial', active: false },
-  { name: 'SM Infra Developers', segment: 'Residential', active: false },
 ]
 
 const leadership = [
@@ -69,13 +69,6 @@ const leadership = [
   },
 ]
 
-const team = [
-  { initials: 'Y', name: 'Yugandhar', role: "Founder's PA & Manager" },
-  { initials: 'S', name: 'Sudhakar', role: 'Head of Supervisors' },
-  { initials: 'SK', name: 'Sivaram Krishna', role: 'Site Engineer' },
-  { initials: 'H', name: 'Harsha', role: 'Office Management' },
-  { initials: 'CR', name: 'Chidvilas Raavi', role: 'Corporate & Digital Affairs Coordinator' },
-]
 
 export default function AboutPage() {
   return (
@@ -86,14 +79,31 @@ export default function AboutPage() {
           <FadeInView>
             <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">Who We Are</p>
             <h1 className="font-serif text-5xl md:text-7xl text-parchment leading-tight">
-              About <span className="font-light text-gold">SRSM Group</span>
+              About <span className="font-light text-gold">SR Builders</span>
             </h1>
           </FadeInView>
         </div>
       </section>
 
+      {/* Mission Statement */}
+      <section className="bg-parchment py-20 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <FadeInView>
+            <p className="text-xs tracking-[0.5em] uppercase text-gold mb-6">Our Purpose</p>
+            <h2 className="font-serif text-4xl md:text-5xl text-forest leading-snug mb-8">
+              Built on Trust. <span className="font-light text-gold">Delivered with Excellence.</span>
+            </h2>
+            <p className="text-charcoal-light leading-relaxed text-base md:text-lg">
+              For over 25 years, SR Builders and Developers has built homes that stand as testaments to craftsmanship and integrity.
+              Debt-free, in-house engineered, and community-focused — we don&apos;t just construct buildings,
+              we shape neighbourhoods.
+            </p>
+          </FadeInView>
+        </div>
+      </section>
+
       {/* About the Company */}
-      <section className="bg-parchment py-24 px-6">
+      <section className="bg-linen py-24 px-6">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-start">
           <FadeInView direction="left">
             <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">Our Legacy</p>
@@ -101,18 +111,18 @@ export default function AboutPage() {
               25 Years of Building <span className="font-light">with Purpose</span>
             </h2>
             <p className="text-charcoal-light leading-relaxed mb-5">
-              SRSM Group is a Hyderabad-based conglomerate with over 25 years of legacy in construction and real estate development.
-              Operating through six legal entities, the Group has delivered 24+ residential and commercial projects across Hyderabad,
-              Vizag, and Bangalore.
+              SR Builders and Developers is a Hyderabad-based real estate developer with over 25 years of legacy in construction
+              and real estate development. Operating through three active legal entities, the Group has delivered 24+ residential
+              and commercial projects across Hyderabad, Vizag, and Bangalore.
             </p>
             <p className="text-charcoal-light leading-relaxed">
               The Group has built its reputation on quality construction, timely delivery, and a customer-first philosophy.
-              With a strong pipeline of upcoming projects across Hyderabad, SRSM Group is poised for its next phase of significant growth.
+              With a strong pipeline of upcoming projects across Hyderabad, SR Builders is poised for its next phase of significant growth.
             </p>
           </FadeInView>
 
           <FadeInView direction="right" delay={0.1}>
-            <div className="bg-linen p-8 border-l-4 border-gold">
+            <div className="bg-parchment p-8 border-l-4 border-gold">
               <p className="text-xs tracking-[0.5em] uppercase text-gold mb-6">Core Strengths</p>
               <ul className="space-y-4">
                 {coreStrengths.map((s, i) => (
@@ -127,7 +137,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission Statement */}
+      {/* Mission Quote */}
       <section className="bg-forest py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <FadeInView>
@@ -144,7 +154,7 @@ export default function AboutPage() {
       </section>
 
       {/* Group Entities */}
-      <section className="bg-linen py-24 px-6">
+      <section className="bg-parchment py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <FadeInView>
             <div className="text-center mb-14">
@@ -152,26 +162,36 @@ export default function AboutPage() {
               <h2 className="font-serif text-4xl text-forest">Group Entities</h2>
             </div>
           </FadeInView>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-3 gap-4">
             {entities.map((entity, i) => (
-              <FadeInView key={i} delay={i * 0.05}>
-                <div className={`p-6 border ${entity.active ? 'border-gold/30 bg-parchment' : 'border-charcoal/10 bg-parchment/50'}`}>
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <h3 className="font-serif text-lg text-forest leading-snug">{entity.name}</h3>
-                    <span className={`text-[10px] tracking-widest uppercase px-2 py-0.5 shrink-0 ${entity.active ? 'bg-gold/10 text-gold' : 'bg-charcoal/5 text-charcoal-light/50'}`}>
-                      {entity.active ? 'Active' : 'Closed'}
-                    </span>
-                  </div>
-                  <p className="text-xs text-charcoal-light/70">{entity.segment}</p>
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+                whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(26,51,32,0.15)' }}
+                className="p-6 border border-gold/30 bg-linen cursor-default group"
+              >
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <h3 className="font-serif text-lg text-forest group-hover:text-gold transition-colors duration-200 leading-snug">
+                    {entity.name}
+                  </h3>
+                  <span className="text-[10px] tracking-widest uppercase px-2 py-0.5 shrink-0 bg-gold/10 text-gold">
+                    Active
+                  </span>
                 </div>
-              </FadeInView>
+                <p className="text-xs text-charcoal-light/70 group-hover:text-charcoal-light transition-colors duration-200">
+                  {entity.segment}
+                </p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Leadership */}
-      <section id="leadership" className="bg-parchment py-24 px-6">
+      <section id="leadership" className="bg-linen py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeInView>
             <div className="text-center mb-14">
@@ -182,74 +202,53 @@ export default function AboutPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {leadership.map((person, i) => (
-              <FadeInView key={i} delay={i * 0.07}>
-                <div className="bg-linen border border-gold/20 p-8 flex flex-col h-full">
-                  {/* Placeholder photo */}
-                  <div className="w-20 h-20 rounded-full bg-forest/10 border-2 border-gold/20 flex items-center justify-center mb-5 self-start">
-                    <span className="font-serif text-xl text-forest font-semibold">{person.initials}</span>
-                  </div>
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+                whileHover={{ y: -6, boxShadow: '0 16px 40px rgba(26,51,32,0.12)' }}
+                className="bg-parchment border border-gold/20 p-8 flex flex-col h-full cursor-default group hover:border-gold/60"
+              >
+                <div className="w-20 h-20 rounded-full bg-forest/10 border-2 border-gold/20 group-hover:border-gold/60 group-hover:bg-forest/20 flex items-center justify-center mb-5 self-start transition-all duration-300">
+                  <span className="font-serif text-xl text-forest font-semibold">{person.initials}</span>
+                </div>
 
-                  <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-1">{person.role}</p>
-                  <h3 className="font-serif text-2xl text-forest mb-1">{person.name}</h3>
-                  <p className="text-xs text-charcoal-light/50 uppercase tracking-wider mb-4">{person.tagline}</p>
+                <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-1">{person.role}</p>
+                <h3 className="font-serif text-2xl text-forest group-hover:text-gold transition-colors duration-300 mb-1">
+                  {person.name}
+                </h3>
+                <p className="text-xs text-charcoal-light/50 uppercase tracking-wider mb-4">{person.tagline}</p>
 
-                  {/* Qualifications */}
-                  {person.qualifications !== null && (
-                    <p className="text-xs text-gold/70 italic mb-4 border-l-2 border-gold/20 pl-3">
-                      {person.qualifications}
-                    </p>
+                {person.qualifications !== null && (
+                  <p className="text-xs text-gold/70 italic mb-4 border-l-2 border-gold/20 pl-3">
+                    {person.qualifications}
+                  </p>
+                )}
+
+                <div className="mt-auto pt-4 border-t border-gold/10">
+                  {person.bio ? (
+                    <p className="text-charcoal-light text-sm leading-relaxed">{person.bio}</p>
+                  ) : (
+                    <p className="text-charcoal-light/30 text-sm italic">[Quote or brief bio to be added]</p>
                   )}
-
-                  {/* Bio / quote space */}
-                  <div className="mt-auto pt-4 border-t border-gold/10">
-                    {person.bio ? (
-                      <p className="text-charcoal-light text-sm leading-relaxed">{person.bio}</p>
-                    ) : (
-                      <p className="text-charcoal-light/30 text-sm italic">[Quote or brief bio to be added]</p>
-                    )}
-                  </div>
                 </div>
-              </FadeInView>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="bg-forest py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <FadeInView>
-            <div className="text-center mb-14">
-              <p className="text-xs tracking-[0.5em] uppercase text-gold/70 mb-3">Our People</p>
-              <h2 className="font-serif text-4xl text-parchment">The Team</h2>
-            </div>
-          </FadeInView>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-            {team.map((member, i) => (
-              <FadeInView key={i} delay={i * 0.06}>
-                <div className="bg-forest-light border border-parchment/10 p-6 text-center">
-                  <div className="w-14 h-14 rounded-full bg-parchment/10 border border-gold/20 flex items-center justify-center mx-auto mb-4">
-                    <span className="font-serif text-lg text-gold">{member.initials}</span>
-                  </div>
-                  <h4 className="font-serif text-lg text-parchment leading-snug mb-1">{member.name}</h4>
-                  <p className="text-xs text-parchment/50 leading-snug">{member.role}</p>
-                </div>
-              </FadeInView>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA to Projects */}
-      <section className="bg-linen py-20 px-6">
+      <section className="bg-forest py-20 px-6">
         <FadeInView>
           <div className="max-w-xl mx-auto text-center">
-            <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">Our Work</p>
-            <h2 className="font-serif text-3xl text-forest mb-6">Explore 24+ Completed Projects</h2>
+            <p className="text-xs tracking-[0.5em] uppercase text-gold/70 mb-4">Our Work</p>
+            <h2 className="font-serif text-3xl text-parchment mb-6">Explore 24+ Completed Projects</h2>
             <Link
               href="/projects"
-              className="inline-block px-8 py-4 bg-forest text-parchment text-sm tracking-widest uppercase hover:bg-forest-dark transition-colors duration-200"
+              className="inline-block px-8 py-4 bg-gold text-forest text-sm tracking-widest uppercase font-semibold hover:bg-gold-dark transition-colors duration-200"
             >
               View All Projects
             </Link>

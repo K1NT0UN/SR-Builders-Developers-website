@@ -32,11 +32,11 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/images/srsm-logo.png"
-            alt="SRSM Group"
-            width={1536}
-            height={1024}
-            className="h-[92px] w-auto object-contain"
+            src="/images/sr-builders-logo-light.png"
+            alt="SR Builders and Developers"
+            width={3168}
+            height={2448}
+            className="h-[80px] w-auto object-contain"
             priority
           />
         </Link>

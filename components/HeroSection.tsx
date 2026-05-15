@@ -45,13 +45,13 @@ export default function HeroSection() {
 
       <div className="relative z-10 px-6 max-w-4xl mx-auto">
         <p ref={eyebrowRef} className="text-gold text-xs tracking-[0.5em] uppercase mb-6">
-          Excellence in Construction &amp; Real Estate
+          Flagship Project · Nisarga — Kollur
         </p>
         <h1 ref={titleRef} className="font-serif text-6xl sm:text-7xl md:text-8xl text-parchment leading-none mb-6">
-          SRSM <span className="text-gold font-light">Group</span>
+          SR <span className="text-gold font-light">Builders</span>
         </h1>
         <p ref={subtitleRef} className="text-parchment/70 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-          25 years of building trust, quality, and lasting legacies across Hyderabad, Vizag, and Bangalore.
+          Creators of Nisarga — 4 &amp; 5 BHK Forestscape Villas in Kollur, Hyderabad. 25 years of building trust, quality, and lasting legacies.
         </p>
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link

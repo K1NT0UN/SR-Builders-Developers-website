@@ -10,15 +10,15 @@ export default function Footer() {
           <div>
             <div className="mb-5">
               <Image
-                src="/images/srsm-logo.png"
-                alt="SRSM Group"
-                width={1536}
-                height={1024}
-                className="h-[90px] w-auto object-contain"
+                src="/images/sr-builders-logo-light.png"
+                alt="SR Builders and Developers"
+                width={3168}
+                height={2448}
+                className="h-[76px] w-auto object-contain"
               />
             </div>
             <p className="text-sm leading-relaxed text-parchment/60 max-w-xs">
-              25+ years of excellence in construction and real estate across Hyderabad, Vizag, and Bangalore.
+              25+ years of excellence in construction and real estate across Hyderabad, Vizag, and Bangalore. A project by SR Builders and Developers.
             </p>
           </div>
 
@@ -60,7 +60,7 @@ export default function Footer() {
 
         <div className="mt-14 pt-6 border-t border-parchment/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-parchment/30 tracking-wide">
           <p>© {new Date().getFullYear()} SRSM Group. All rights reserved.</p>
-          <p>SR Builders · SM Builders · SM Projects · SM Infra Developers</p>
+          <p>SR Builders &amp; Developers · SM Builders · SM Builders and Developers</p>
         </div>
       </div>
     </footer>
