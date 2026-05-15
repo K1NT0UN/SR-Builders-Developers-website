@@ -110,24 +110,65 @@ export default function ProjectsTabs({ current, pipeline, completed }: Props) {
               <h3 className="font-serif text-2xl text-forest mb-8 text-center">Coming Soon</h3>
               <div className="max-w-3xl mx-auto space-y-4">
                 {pipeline.map((p, i) => (
+                  i === 0 ? (
+                    /* ── Highrise Apartments — featured tile ── */
+                    <motion.div
+                      key={i}
+                      whileHover={{ y: -4, boxShadow: '0 20px 48px rgba(200,169,81,0.18)' }}
+                      transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+                      className="border-2 border-gold bg-forest/4 p-10 relative group cursor-default overflow-hidden"
+                    >
+                      {/* gold accent bar */}
+                      <div className="absolute top-0 left-0 w-full h-1 bg-gold" />
+                      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                        <div className="flex-1">
+                          <span className="text-[10px] tracking-[0.4em] uppercase text-gold font-semibold mb-3 block">
+                            Coming Soon · SR Builders and Developers
+                          </span>
+                          <h4 className="font-serif text-3xl text-forest group-hover:text-gold transition-colors duration-300 mb-1 font-bold">
+                            {p.name}
+                            <span className="ml-3 align-middle text-[10px] tracking-widest uppercase text-gold/60 font-sans font-normal border border-gold/40 px-2 py-0.5">
+                              Name TBD
+                            </span>
+                          </h4>
+                          <p className="text-sm text-charcoal-light mb-4">{p.location} · {p.type}</p>
+                          {p.description && (
+                            <p className="text-sm text-charcoal-light leading-relaxed max-w-lg">{p.description}</p>
+                          )}
+                          <div className="mt-5 flex flex-wrap gap-4 text-xs">
+                            {['High-Rise Living', 'Nisarga Township', 'Premium Apartments', 'Kollur Corridor'].map(tag => (
+                              <span key={tag} className="px-3 py-1 border border-gold/30 text-gold/80 tracking-wide uppercase">{tag}</span>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="shrink-0 md:text-right">
+                          <span className="inline-block px-4 py-1.5 border border-gold text-gold text-[10px] tracking-widest uppercase mb-3">
+                            Pipeline
+                          </span>
+                          {p.targetCompletion && (
+                            <p className="text-xs text-charcoal-light/60">{p.targetCompletion}</p>
+                          )}
+                          <Link
+                            href="/enquire"
+                            className="mt-4 block text-[10px] tracking-widest uppercase text-forest border-b border-gold pb-0.5 hover:text-gold transition-colors text-right"
+                          >
+                            Register Interest →
+                          </Link>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ) : (
                   <motion.div
                     key={i}
                     whileHover={{ y: -3, boxShadow: '0 12px 36px rgba(26,51,32,0.12)' }}
                     transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-                    className={`bg-transparent border-2 ${pipelineBorderColors[i] ?? 'border-forest/30'} p-8 relative group cursor-default hover:bg-forest/4 transition-all duration-300`}
+                    className={`bg-transparent border-2 ${pipelineBorderColors[i] ?? 'border-forest/30'} p-8 relative group cursor-default hover:bg-forest/[0.03] transition-all duration-300`}
                   >
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                       <div>
-                        <span className="text-[10px] tracking-widest uppercase text-gold/70 mb-2 block">
-                          {i === 0 ? 'Coming Soon — SR Builders and Developers' : 'Pipeline'}
-                        </span>
+                        <span className="text-[10px] tracking-widest uppercase text-charcoal-light/50 mb-2 block">Pipeline</span>
                         <h4 className="font-serif text-2xl text-forest group-hover:text-gold transition-colors duration-300 mb-1">
                           {p.name}
-                          {i === 0 && (
-                            <span className="ml-3 text-xs tracking-widest uppercase text-gold/60 font-sans font-normal">
-                              Name TBD
-                            </span>
-                          )}
                         </h4>
                         <p className="text-xs text-charcoal-light/70 mb-2">{p.location}</p>
                         {p.description && (
@@ -138,14 +179,13 @@ export default function ProjectsTabs({ current, pipeline, completed }: Props) {
                         {p.targetCompletion && (
                           <p className="text-xs text-charcoal-light/50 md:text-right">{p.targetCompletion}</p>
                         )}
-                        <span className={`mt-2 inline-block text-[10px] tracking-widest uppercase px-3 py-1 border ${
-                          i === 0 ? 'border-gold text-gold' : 'border-forest/30 text-forest/50'
-                        }`}>
+                        <span className="mt-2 inline-block text-[10px] tracking-widest uppercase px-3 py-1 border border-forest/30 text-forest/50">
                           Pipeline
                         </span>
                       </div>
                     </div>
                   </motion.div>
+                  )
                 ))}
               </div>
             </div>

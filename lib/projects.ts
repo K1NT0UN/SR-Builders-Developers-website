@@ -29,12 +29,13 @@ export const currentProjects: Project[] = [
 export const pipelineProjects: Project[] = [
   {
     company: 'SR Builders and Developers',
-    name: 'Nisarga Apartments',
+    name: 'Highrise Apartments',
     location: 'Kollur, Hyderabad',
     status: 'PIPELINE',
     type: 'Residential',
-    description: 'Premium apartment residences within the Nisarga township. Name to be announced.',
-    targetCompletion: 'End of 2029',
+    description: 'A premium high-rise residential development within the Nisarga township, Kollur — Hyderabad\'s fastest-growing corridor. Designed for modern urban living with world-class amenities, shared access to the Nisarga township infrastructure, and proximity to Pharma City, Metro Phase-2, and major IT hubs. Final brand name to be announced.',
+    targetCompletion: 'End of 2030',
+    highlight: true,
   },
   { company: 'SRSM Group', name: 'Borampet Villas', location: 'Borampet, Hyderabad', status: 'PIPELINE', type: 'Residential', description: '~30 Acres of residential villa development.' },
   { company: 'SRSM Group', name: 'Nagole Villas', location: 'Nagole, Hyderabad', status: 'PIPELINE', type: 'Residential', description: '~10 Acres of residential villa development.' },

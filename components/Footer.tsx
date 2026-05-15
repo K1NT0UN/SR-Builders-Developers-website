@@ -12,9 +12,9 @@ export default function Footer() {
               <Image
                 src="/images/sr-builders-logo-light.png"
                 alt="SR Builders and Developers"
-                width={3168}
-                height={2448}
-                className="h-[76px] w-auto object-contain"
+                width={2000}
+                height={1545}
+                className="h-[64px] w-auto object-contain"
               />
             </div>
             <p className="text-sm leading-relaxed text-parchment/60 max-w-xs">
