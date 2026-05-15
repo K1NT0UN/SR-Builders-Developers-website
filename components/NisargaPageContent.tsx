@@ -95,7 +95,6 @@ const locationHighlights = {
 export default function NisargaPageContent() {
   return (
     <>
-      {/* ── HERO ── */}
       <section className="relative min-h-screen flex items-end overflow-hidden">
         <Image
           src="/images/nisarga/hero-entrance.jpg"
@@ -133,7 +132,6 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      {/* ── STATS BAR ── */}
       <section className="bg-forest-dark py-10 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
           {stats.map(({ value, label }) => (
@@ -145,7 +143,6 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      {/* ── VISION ── */}
       <section className="bg-parchment py-28 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <FadeInView direction="left">
@@ -176,7 +173,6 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      {/* ── ARCHITECTURE ── */}
       <section className="relative py-36 px-6 overflow-hidden">
         <Image
           src="/images/nisarga/arch-streetscape.jpg"
@@ -200,7 +196,6 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      {/* ── AERIAL + MASTER PLAN ── */}
       <section className="bg-linen py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <FadeInView>
@@ -245,7 +240,6 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      {/* ── VILLA TYPES ── */}
       <section id="villas" className="bg-parchment py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <FadeInView>
@@ -305,7 +299,6 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      {/* ── STREETSCAPE FULL BLEED ── */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
         <Image
           src="/images/nisarga/streetscape-rain.jpg"
@@ -329,7 +322,6 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      {/* ── INTERIORS ── */}
       <section className="bg-charcoal py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <FadeInView>
@@ -354,7 +346,6 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      {/* ── CLUBHOUSES ── */}
       <section className="bg-parchment py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <FadeInView>
@@ -422,7 +413,6 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      {/* ── OUTDOOR AMENITIES ── */}
       <section className="bg-linen py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <FadeInView>
@@ -453,7 +443,6 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      {/* ── SPECIFICATIONS ── */}
       <section className="bg-parchment py-28 px-6">
         <div className="max-w-5xl mx-auto">
           <FadeInView>
@@ -480,7 +469,6 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      {/* ── LOCATION ── */}
       <section className="bg-forest py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <FadeInView>
@@ -529,7 +517,6 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
       <section className="bg-gold py-20 px-6 text-center">
         <FadeInView>
           <p className="text-xs tracking-[0.5em] uppercase text-forest/60 mb-4">Enquire Today</p>

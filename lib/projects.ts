@@ -9,7 +9,6 @@ export interface Project {
   type: ProjectType | string
   description?: string
   targetCompletion?: string
-  highlight?: boolean
 }
 
 export const currentProjects: Project[] = [
@@ -22,7 +21,6 @@ export const currentProjects: Project[] = [
     description:
       'A landmark gated township offering premium 4 & 5 BHK forestscape villas on 17+ acres in Kollur, one of Hyderabad\'s fastest-growing corridors. 50+ amenities, 2 clubhouses. RERA: PO22000007723.',
     targetCompletion: 'Villas: End of 2028',
-    highlight: true,
   },
 ]
 
@@ -35,7 +33,6 @@ export const pipelineProjects: Project[] = [
     type: 'Residential',
     description: 'A premium high-rise residential development within the Nisarga township, Kollur — Hyderabad\'s fastest-growing corridor. Designed for modern urban living with world-class amenities, shared access to the Nisarga township infrastructure, and proximity to Pharma City, Metro Phase-2, and major IT hubs. Final brand name to be announced.',
     targetCompletion: 'End of 2030',
-    highlight: true,
   },
   { company: 'SRSM Group', name: 'Borampet Villas', location: 'Borampet, Hyderabad', status: 'PIPELINE', type: 'Residential', description: '~30 Acres of residential villa development.' },
   { company: 'SRSM Group', name: 'Nagole Villas', location: 'Nagole, Hyderabad', status: 'PIPELINE', type: 'Residential', description: '~10 Acres of residential villa development.' },

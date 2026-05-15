@@ -40,7 +40,6 @@ export default function StatsSection() {
 
     return () => {
       triggers.forEach(t => t?.kill())
-      ScrollTrigger.getAll().forEach(st => st.kill())
     }
   }, [])
 
