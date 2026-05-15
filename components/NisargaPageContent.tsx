@@ -64,23 +64,6 @@ const nfinityAmenities = [
   'Seating Deck', 'Grocery Store', 'Private Lobby',
 ]
 
-const specs = [
-  { category: 'Structure', detail: 'RCC framed, seismic-load resistant, 9" red brick / CC Solid Blocks' },
-  { category: 'Flooring', detail: 'Premium vitrified tiles (1000×1000mm) in all bedrooms; anti-skid vitrified in bathrooms' },
-  { category: 'Railing', detail: 'SS/Glass railing on balcony and staircase' },
-  { category: 'Plumbing', detail: 'Fully treated bore water with individual villa metres' },
-  { category: 'Windows', detail: 'Aluminium windows with mosquito mesh provision' },
-  { category: 'Doors', detail: 'Engineered/filled wood frame, 9 ft height, PU polish finish' },
-  { category: 'Painting', detail: '2 coats premium acrylic emulsion (interior) · 2 coats textured external emulsion' },
-  { category: 'Electrical', detail: 'Concealed conduit, power outlets for all appliances' },
-  { category: 'Sanitary Ware', detail: 'Delta or equivalent, wall-mounted WC' },
-  { category: 'Car Parking', detail: 'Dedicated basement parking per unit' },
-  { category: 'Security', detail: 'CC cameras, biometric access, boom barriers at every gate' },
-  { category: 'Elevator', detail: 'Hydraulic lift, 1 per villa (reputed make)' },
-  { category: 'AC Provision', detail: 'Copper piping + concealed drain pipe for entire villa' },
-  { category: 'Vaastu', detail: '100% Vaastu compliant' },
-  { category: 'Billing', detail: 'Automated prepaid billing — water, power & maintenance' },
-]
 
 const locationHighlights = {
   connectivity: ['TSRTC Bus Connectivity', 'Hyderabad Metro Phase-2 (Planned)', 'First/Last Mile Connectivity', 'Hyderabad Road Network', 'Multi-Modal Transport Integration'],
@@ -311,32 +294,6 @@ export default function NisargaPageContent() {
       </section>
 
       <NisargaLandscapeGallery />
-
-      <section className="bg-parchment py-28 px-6">
-        <div className="max-w-5xl mx-auto">
-          <FadeInView>
-            <div className="text-center mb-14">
-              <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">Construction Quality</p>
-              <h2 className="font-serif text-4xl md:text-5xl text-charcoal">
-                Specifications Built to Last.
-              </h2>
-            </div>
-          </FadeInView>
-          <FadeInView>
-            <div className="border border-linen divide-y divide-linen">
-              {specs.map(({ category, detail }, i) => (
-                <div
-                  key={category}
-                  className={`grid grid-cols-3 gap-4 px-6 py-4 ${i % 2 === 0 ? 'bg-white' : 'bg-parchment'}`}
-                >
-                  <span className="text-sm font-semibold text-charcoal col-span-1">{category}</span>
-                  <span className="text-sm text-charcoal/60 col-span-2">{detail}</span>
-                </div>
-              ))}
-            </div>
-          </FadeInView>
-        </div>
-      </section>
 
       <section className="bg-forest py-28 px-6">
         <div className="max-w-7xl mx-auto">
