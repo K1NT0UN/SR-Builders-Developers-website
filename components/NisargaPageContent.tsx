@@ -1,6 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import FadeInView from '@/components/FadeInView'
+import NisargaHeroCarousel from '@/components/NisargaHeroCarousel'
+import NisargaOverviewLightbox from '@/components/NisargaOverviewLightbox'
+import NisargaLandscapeGallery from '@/components/NisargaLandscapeGallery'
 
 const stats = [
   { value: '17+', label: 'Acres' },
@@ -56,14 +59,9 @@ const nspireAmenities = [
   'Yoga', 'Roof Garden', 'Library', 'Work Station',
 ]
 
-const nfiniteAmenities = [
+const nfinityAmenities = [
   'Banquet Hall', 'Pantry', 'Dining Hall',
   'Seating Deck', 'Grocery Store', 'Private Lobby',
-]
-
-const outdoorAmenities = [
-  'Outdoor Kitchen', 'Gym', 'Badminton Court', 'Swimming Pool',
-  'Kids Pool', 'Jogging Track', 'Pet Park', 'Lawn', 'Cricket Pitch',
 ]
 
 const specs = [
@@ -95,42 +93,7 @@ const locationHighlights = {
 export default function NisargaPageContent() {
   return (
     <>
-      <section className="relative min-h-screen flex items-end overflow-hidden">
-        <Image
-          src="/images/nisarga/hero-entrance.jpg"
-          alt="Nisarga entrance gate at dusk"
-          fill
-          className="object-cover object-center"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/60 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-20 w-full">
-          <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">A Project by SR Builders</p>
-          <h1 className="font-serif text-6xl md:text-8xl text-parchment leading-tight">
-            The Nisarga
-          </h1>
-          <p className="text-parchment/80 text-xl md:text-2xl mt-3 font-light">
-            Where Green Meets Grandeur
-          </p>
-          <p className="text-parchment/60 mt-2 text-sm tracking-wide">
-            4 &amp; 5 BHK Forestscape Villas · Patighanpur, Kollur, Hyderabad
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="/enquire#site-visit"
-              className="px-8 py-3.5 bg-gold text-forest text-sm tracking-widest uppercase font-semibold hover:bg-gold-dark transition-colors duration-200"
-            >
-              Book a Site Visit
-            </Link>
-            <a
-              href="#villas"
-              className="px-8 py-3.5 border border-parchment/40 text-parchment text-sm tracking-widest uppercase hover:border-gold hover:text-gold transition-colors duration-200"
-            >
-              Explore Villas
-            </a>
-          </div>
-        </div>
-      </section>
+      <NisargaHeroCarousel />
 
       <section className="bg-forest-dark py-10 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
@@ -196,49 +159,7 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      <section className="bg-linen py-28 px-6">
-        <div className="max-w-7xl mx-auto">
-          <FadeInView>
-            <div className="text-center mb-16">
-              <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">Overview</p>
-              <h2 className="font-serif text-4xl md:text-5xl text-charcoal">
-                Reserved by the Forest
-              </h2>
-              <p className="text-charcoal/60 mt-3 text-sm max-w-xl mx-auto">
-                Each revealed in its own grandeur.
-              </p>
-            </div>
-          </FadeInView>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <FadeInView direction="left">
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src="/images/nisarga/aerial.jpg"
-                  alt="Nisarga — aerial township view"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </FadeInView>
-            <FadeInView direction="right">
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src="/images/nisarga/masterplan.jpg"
-                  alt="Nisarga master plan"
-                  fill
-                  className="object-cover object-top"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-forest/80 px-6 py-4">
-                  <p className="font-serif text-lg text-gold">Master Plan</p>
-                  <p className="text-parchment/60 text-xs mt-1">
-                    17+ acres · Gated · Vaastu-compliant · Two clubhouses · Wide internal roads
-                  </p>
-                </div>
-              </div>
-            </FadeInView>
-          </div>
-        </div>
-      </section>
+      <NisargaOverviewLightbox />
 
       <section id="villas" className="bg-parchment py-28 px-6">
         <div className="max-w-7xl mx-auto">
@@ -322,30 +243,6 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      <section className="bg-charcoal py-28 px-6">
-        <div className="max-w-7xl mx-auto">
-          <FadeInView>
-            <div className="text-center mb-12">
-              <h2 className="font-serif text-4xl md:text-5xl text-parchment">
-                Grandeur That Outlives Time,
-              </h2>
-              <p className="font-serif text-2xl text-gold mt-2">Unapologetically Eternal.</p>
-              <p className="text-parchment/40 text-sm tracking-wide mt-3">Suited for a life less ordinary</p>
-            </div>
-          </FadeInView>
-          <FadeInView>
-            <div className="relative aspect-[16/7] overflow-hidden">
-              <Image
-                src="/images/nisarga/interiors-collage.jpg"
-                alt="Nisarga villa interiors"
-                fill
-                className="object-cover object-center"
-              />
-            </div>
-          </FadeInView>
-        </div>
-      </section>
-
       <section className="bg-parchment py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <FadeInView>
@@ -357,12 +254,11 @@ export default function NisargaPageContent() {
             </div>
           </FadeInView>
 
-          {/* Club N'Spire */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 mb-16 overflow-hidden">
             <FadeInView direction="left" className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[480px]">
               <Image
-                src="/images/nisarga/clubhouse-nspire-exterior.jpg"
-                alt="Club N'Spire exterior"
+                src="/images/nisarga/clubhouse-nspire.jpg"
+                alt="Club N'Spire"
                 fill
                 className="object-cover"
               />
@@ -370,9 +266,10 @@ export default function NisargaPageContent() {
             <FadeInView direction="right" className="bg-forest p-10 lg:p-14 flex flex-col justify-center">
               <p className="text-xs tracking-[0.4em] uppercase text-gold/60 mb-3">Clubhouse 1</p>
               <h3 className="font-serif text-4xl text-parchment mb-4">Club N'Spire</h3>
-              <p className="text-parchment/60 leading-relaxed mb-8 text-sm">
+              <p className="text-parchment/60 leading-relaxed mb-2 text-sm">
                 Every visit becomes a passage into calm, where zen-like balance, deep detox, and pure rejuvenation weave into a ritual. To immerse here is to indulge in atmospheres shaped for body, mind and spirit.
               </p>
+              <p className="text-gold/70 text-xs tracking-widest uppercase mb-6">12 World-Class Amenities</p>
               <div className="grid grid-cols-2 gap-2">
                 {nspireAmenities.map((a) => (
                   <div key={a} className="flex items-center gap-2 text-sm text-parchment/70">
@@ -384,16 +281,16 @@ export default function NisargaPageContent() {
             </FadeInView>
           </div>
 
-          {/* Club N'finite */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden">
             <FadeInView direction="left" className="bg-charcoal p-10 lg:p-14 flex flex-col justify-center lg:order-1">
               <p className="text-xs tracking-[0.4em] uppercase text-gold/60 mb-3">Clubhouse 2</p>
-              <h3 className="font-serif text-4xl text-parchment mb-4">Club N'finite</h3>
-              <p className="text-parchment/60 leading-relaxed mb-8 text-sm">
+              <h3 className="font-serif text-4xl text-parchment mb-4">Club N'finity</h3>
+              <p className="text-parchment/60 leading-relaxed mb-2 text-sm">
                 Evolved luxury speaks here in the language of privilege. Every chamber carries its own stature, every setting rises into an experience that belongs to the chosen few.
               </p>
+              <p className="text-gold/70 text-xs tracking-widest uppercase mb-6">50+ Amenities Combined Across Both Clubhouses</p>
               <div className="grid grid-cols-2 gap-2">
-                {nfiniteAmenities.map((a) => (
+                {nfinityAmenities.map((a) => (
                   <div key={a} className="flex items-center gap-2 text-sm text-parchment/70">
                     <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
                     {a}
@@ -403,8 +300,8 @@ export default function NisargaPageContent() {
             </FadeInView>
             <FadeInView direction="right" className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[480px] lg:order-2">
               <Image
-                src="/images/nisarga/clubhouse-nfinite-exterior.jpg"
-                alt="Club N'finite exterior"
+                src="/images/nisarga/clubhouse-nfinity.jpg"
+                alt="Club N'finity"
                 fill
                 className="object-cover"
               />
@@ -413,35 +310,7 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      <section className="bg-linen py-28 px-6">
-        <div className="max-w-7xl mx-auto">
-          <FadeInView>
-            <div className="text-center mb-12">
-              <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">Open Air</p>
-              <h2 className="font-serif text-4xl md:text-5xl text-charcoal">
-                Life Beyond Four Walls.
-              </h2>
-            </div>
-          </FadeInView>
-          <FadeInView>
-            <div className="relative aspect-[16/7] overflow-hidden mb-10">
-              <Image
-                src="/images/nisarga/amenities-outdoor.jpg"
-                alt="Nisarga outdoor amenities"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </FadeInView>
-          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-4 text-center">
-            {outdoorAmenities.map((a) => (
-              <FadeInView key={a}>
-                <div className="text-xs tracking-wide text-charcoal/60 uppercase">{a}</div>
-              </FadeInView>
-            ))}
-          </div>
-        </div>
-      </section>
+      <NisargaLandscapeGallery />
 
       <section className="bg-parchment py-28 px-6">
         <div className="max-w-5xl mx-auto">
