@@ -8,9 +8,6 @@ const heroImages = [
   '/images/nisarga/hero-1.jpg',
   '/images/nisarga/hero-2.jpg',
   '/images/nisarga/hero-3.jpg',
-  '/images/nisarga/hero-4.jpg',
-  '/images/nisarga/hero-5.jpg',
-  '/images/nisarga/hero-6.jpg',
   '/images/nisarga/hero-7.jpg',
 ]
 
