@@ -5,17 +5,11 @@ import { motion } from 'framer-motion'
 import FadeInView from '@/components/FadeInView'
 
 const coreStrengths = [
-  '24+ completed projects across residential, commercial, and mixed-use segments',
+  'Proven track record across residential and commercial segments in Hyderabad',
   'Debt-free balance sheet — no existing loans or credit facilities',
   'In-house civil engineering team ensuring quality control and execution excellence',
   'Long-standing relationships with architects, contractors, and accountants',
   'Active RERA registration underway for the flagship Kollur project',
-]
-
-const entities = [
-  { name: 'SR Builders and Developers', segment: 'Residential & Villas', active: true },
-  { name: 'SM Builders', segment: 'Residential & Commercial', active: true },
-  { name: 'SM Builders and Developers', segment: 'Residential', active: true },
 ]
 
 const leadership = [
@@ -25,7 +19,7 @@ const leadership = [
     name: 'Mr. Vasu Raavi',
     tagline: 'Vision · Strategy · Legacy',
     qualifications: null,
-    bio: 'Starting from humble beginnings in Nellore, Andhra Pradesh, Mr. Vasu Raavi built the SRSM Group from the ground up over more than two decades. His hands-on involvement — from land acquisition to project delivery — has shaped the Group\'s culture of quality and integrity.',
+    bio: 'Starting from humble beginnings in Nellore, Andhra Pradesh, Mr. Vasu Raavi built SR Builders and Developers from the ground up over more than two decades. His hands-on involvement — from land acquisition to project delivery — has shaped the company\'s culture of quality and integrity.',
   },
   {
     initials: 'R',
@@ -51,22 +45,6 @@ const leadership = [
     qualifications: null,
     bio: '',
   },
-  {
-    initials: 'RRC',
-    role: 'Director',
-    name: 'Raavi Rishi Chowdary',
-    tagline: 'Strategy · Investments',
-    qualifications: '[Qualifications to be added]',
-    bio: '',
-  },
-  {
-    initials: 'MR',
-    role: 'In-house Architect',
-    name: 'Manaswitha Raavi',
-    tagline: 'Design · Planning',
-    qualifications: '[Qualifications to be added]',
-    bio: '',
-  },
 ]
 
 
@@ -79,7 +57,7 @@ export default function AboutPage() {
           <FadeInView>
             <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">Who We Are</p>
             <h1 className="font-serif text-5xl md:text-7xl text-parchment leading-tight">
-              About <span className="font-light text-gold">SRSM Group</span>
+              About <span className="font-light text-gold">SR Builders</span>
             </h1>
           </FadeInView>
         </div>
@@ -94,7 +72,7 @@ export default function AboutPage() {
               Built on Trust. <span className="font-light text-gold">Delivered with Excellence.</span>
             </h2>
             <p className="text-charcoal-light leading-relaxed text-base md:text-lg">
-              For over 25 years, SRSM Group has built homes that stand as testaments to craftsmanship and integrity.
+              For over 25 years, SR Builders and Developers has built homes that stand as testaments to craftsmanship and integrity.
               Debt-free, in-house engineered, and community-focused — we don&apos;t just construct buildings,
               we shape neighbourhoods.
             </p>
@@ -111,13 +89,13 @@ export default function AboutPage() {
               25 Years of Building <span className="font-light">with Purpose</span>
             </h2>
             <p className="text-charcoal-light leading-relaxed mb-5">
-              SRSM Group is a Hyderabad-based real estate developer with over 25 years of legacy in construction
-              and real estate development. Operating through three active legal entities, the Group has delivered 24+ residential
-              and commercial projects across Hyderabad, Vizag, and Bangalore.
+              SR Builders and Developers is a Hyderabad-based real estate company with over 25 years of legacy in construction
+              and real estate development. We have delivered residential and commercial projects across Hyderabad,
+              earning a reputation for quality and on-time delivery.
             </p>
             <p className="text-charcoal-light leading-relaxed">
-              The Group has built its reputation on quality construction, timely delivery, and a customer-first philosophy.
-              With a strong pipeline of upcoming projects across Hyderabad, SRSM Group is poised for its next phase of significant growth.
+              Built on a customer-first philosophy, with a strong pipeline of upcoming projects across Hyderabad,
+              SR Builders and Developers is poised for its next phase of significant growth.
             </p>
           </FadeInView>
 
@@ -150,43 +128,6 @@ export default function AboutPage() {
               Cities of Operation: Hyderabad · Vizag · Bangalore
             </p>
           </FadeInView>
-        </div>
-      </section>
-
-      {/* Group Entities */}
-      <section className="bg-parchment py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <FadeInView>
-            <div className="text-center mb-14">
-              <p className="text-xs tracking-[0.5em] uppercase text-gold mb-3">Structure</p>
-              <h2 className="font-serif text-4xl text-forest">Group Entities</h2>
-            </div>
-          </FadeInView>
-          <div className="grid sm:grid-cols-3 gap-4">
-            {entities.map((entity, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.07 }}
-                whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(26,51,32,0.15)' }}
-                className="p-6 border border-gold/30 bg-linen cursor-default group"
-              >
-                <div className="flex items-start justify-between gap-2 mb-2">
-                  <h3 className="font-serif text-lg text-forest group-hover:text-gold transition-colors duration-200 leading-snug">
-                    {entity.name}
-                  </h3>
-                  <span className="text-[10px] tracking-widest uppercase px-2 py-0.5 shrink-0 bg-gold/10 text-gold">
-                    Active
-                  </span>
-                </div>
-                <p className="text-xs text-charcoal-light/70 group-hover:text-charcoal-light transition-colors duration-200">
-                  {entity.segment}
-                </p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -245,7 +186,7 @@ export default function AboutPage() {
         <FadeInView>
           <div className="max-w-xl mx-auto text-center">
             <p className="text-xs tracking-[0.5em] uppercase text-gold/70 mb-4">Our Work</p>
-            <h2 className="font-serif text-3xl text-parchment mb-6">Explore 24+ Completed Projects</h2>
+            <h2 className="font-serif text-3xl text-parchment mb-6">Explore Our Completed Projects</h2>
             <Link
               href="/projects"
               className="inline-block px-8 py-4 bg-gold text-forest text-sm tracking-widest uppercase font-semibold hover:bg-gold-dark transition-colors duration-200"
