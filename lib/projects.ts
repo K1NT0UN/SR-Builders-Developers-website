@@ -27,7 +27,7 @@ export const currentProjects: Project[] = [
 export const pipelineProjects: Project[] = [
   {
     company: 'SR Builders and Developers',
-    name: 'Nisarga Apartments',
+    name: 'Highrise Apartments',
     location: 'Kollur, Hyderabad',
     status: 'PIPELINE',
     type: 'Residential',

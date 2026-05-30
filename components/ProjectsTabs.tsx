@@ -127,6 +127,9 @@ export default function ProjectsTabs({ current, pipeline, completed }: Props) {
                           </span>
                           <h4 className="font-serif text-3xl text-forest group-hover:text-gold transition-colors duration-300 mb-1 font-bold">
                             {p.name}
+                            <span className="ml-3 align-middle text-[10px] tracking-widest uppercase text-gold/60 font-sans font-normal border border-gold/40 px-2 py-0.5">
+                              Name TBD
+                            </span>
                           </h4>
                           <p className="text-sm text-charcoal-light mb-4">{p.location} · {p.type}</p>
                           {p.description && (
