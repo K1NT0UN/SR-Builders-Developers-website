@@ -5,11 +5,11 @@ import { motion } from 'framer-motion'
 import FadeInView from '@/components/FadeInView'
 
 const coreStrengths = [
-  'Proven track record across residential and commercial segments in Hyderabad',
-  'Debt-free balance sheet — no existing loans or credit facilities',
-  'In-house civil engineering team ensuring quality control and execution excellence',
-  'Long-standing relationships with architects, contractors, and accountants',
-  'Active RERA registration underway for the flagship Kollur project',
+  'Zero debt — every project funded entirely without loans or credit facilities',
+  'In-house civil engineering from foundation to handover, no outsourced oversight',
+  'Vaastu-compliant design across all residential projects',
+  'RERA-registered flagship township at Kollur — PO22000007723',
+  'Two decades of trusted relationships with Hyderabad\'s leading architects and contractors',
 ]
 
 const leadership = [
@@ -75,14 +75,15 @@ export default function AboutPage() {
       <section className="bg-parchment py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <FadeInView>
-            <p className="text-xs tracking-[0.5em] uppercase text-gold mb-6">Our Purpose</p>
+            <p className="text-xs tracking-[0.5em] uppercase text-gold mb-6">Our Philosophy</p>
             <h2 className="font-serif text-4xl md:text-5xl text-forest leading-snug mb-8">
-              Built on Trust. <span className="font-light text-gold">Delivered with Excellence.</span>
+              Homes Built to Last.{' '}
+              <span className="font-light text-gold">Relationships That Do Too.</span>
             </h2>
             <p className="text-charcoal-light leading-relaxed text-base md:text-lg">
-              For over 25 years, SR Builders and Developers has built homes that stand as testaments to craftsmanship and integrity.
-              Debt-free, in-house engineered, and community-focused — we don&apos;t just construct buildings,
-              we shape neighbourhoods.
+              SR Builders and Developers was founded on a simple conviction — that the people who buy a home deserve the same
+              care and attention as the people who build one. Over 25 years, that conviction has shaped every decision we make,
+              from the land we acquire to the materials we specify.
             </p>
           </FadeInView>
         </div>
@@ -92,19 +93,19 @@ export default function AboutPage() {
       <section className="bg-linen py-24 px-6">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-start">
           <FadeInView direction="left">
-            <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">Our Legacy</p>
+            <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">Our Story</p>
             <h2 className="font-serif text-4xl text-forest mb-6 leading-snug">
-              25 Years of Building <span className="font-light">with Purpose</span>
+              Rooted in Hyderabad. <span className="font-light">Built for Generations.</span>
             </h2>
             <p className="text-charcoal-light leading-relaxed mb-5">
-              Founded by Mr. Vasu Raavi, SR Builders and Developers has grown from a single-project venture into one of
-              Hyderabad's trusted residential developers — guided by a founding belief that a home is more than structure;
-              it is the setting for a family's most important moments.
+              What began as a single residential project in Hyderabad has grown into a company with a 25-year record of
+              delivering quality homes across the city. SR Builders and Developers was built the hard way —
+              project by project, relationship by relationship, without shortcuts.
             </p>
             <p className="text-charcoal-light leading-relaxed">
-              Every project we undertake is backed by in-house engineering, transparent dealings, and an unwavering
-              commitment to finish quality. As we enter our next chapter with Nisarga Villas, we bring the same
-              rigour — now at a scale that matches our ambition.
+              Today, with Nisarga Villas at Kollur, we are building at a scale we have always been capable of —
+              a 17-acre gated township where 50+ amenities, two clubhouses, and a design philosophy that places
+              nature at the centre of every home come together in a single address.
             </p>
           </FadeInView>
 
@@ -128,13 +129,12 @@ export default function AboutPage() {
       <section className="bg-forest py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <FadeInView>
-            <p className="text-xs tracking-[0.5em] uppercase text-gold/70 mb-6">Mission</p>
+            <p className="text-xs tracking-[0.5em] uppercase text-gold/70 mb-6">What We Stand For</p>
             <blockquote className="font-serif text-3xl md:text-4xl text-parchment leading-snug font-light mb-8">
-              &ldquo;To deliver homes and spaces that enrich lives — built with integrity, crafted with precision,
-              and rooted in the communities we serve.&rdquo;
+              &ldquo;Build well. Build honestly. Build something that makes the people inside it proud.&rdquo;
             </blockquote>
             <p className="text-parchment/60 text-sm">
-              Hyderabad, Telangana
+              The founding principle of SR Builders and Developers · Hyderabad, Telangana
             </p>
           </FadeInView>
         </div>
@@ -194,13 +194,13 @@ export default function AboutPage() {
       <section className="bg-forest py-20 px-6">
         <FadeInView>
           <div className="max-w-xl mx-auto text-center">
-            <p className="text-xs tracking-[0.5em] uppercase text-gold/70 mb-4">Our Work</p>
-            <h2 className="font-serif text-3xl text-parchment mb-6">Explore Our Completed Projects</h2>
+            <p className="text-xs tracking-[0.5em] uppercase text-gold/70 mb-4">Our Portfolio</p>
+            <h2 className="font-serif text-3xl text-parchment mb-6">25 Years of Work, One Address at a Time</h2>
             <Link
               href="/projects"
               className="inline-block px-8 py-4 bg-gold text-forest text-sm tracking-widest uppercase font-semibold hover:bg-gold-dark transition-colors duration-200"
             >
-              View All Projects
+              See What We&apos;ve Built
             </Link>
           </div>
         </FadeInView>
