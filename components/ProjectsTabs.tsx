@@ -131,7 +131,7 @@ export default function ProjectsTabs({ current, pipeline, completed }: Props) {
                       key={i}
                       whileHover={{ y: -4, boxShadow: '0 20px 48px rgba(200,169,81,0.18)' }}
                       transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-                      className="border-2 border-gold bg-linen p-10 relative group cursor-default overflow-hidden"
+                      className="border-2 border-gold bg-parchment p-10 relative group cursor-default overflow-hidden"
                     >
                       {/* gold accent bar */}
                       <div className="absolute top-0 left-0 w-full h-1 bg-gold" />
@@ -177,7 +177,7 @@ export default function ProjectsTabs({ current, pipeline, completed }: Props) {
                     key={i}
                     whileHover={{ y: -3, boxShadow: '0 12px 36px rgba(26,51,32,0.12)' }}
                     transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-                    className={`bg-parchment border-2 ${pipelineBorderColors[i] ?? 'border-forest/30'} p-8 relative group cursor-default hover:bg-linen transition-all duration-300`}
+                    className={`bg-parchment border-2 ${pipelineBorderColors[i] ?? 'border-forest/30'} p-8 relative group cursor-default hover:bg-parchment/80 transition-all duration-300`}
                   >
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                       <div>
