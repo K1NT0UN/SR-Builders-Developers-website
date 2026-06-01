@@ -28,7 +28,7 @@ export default function NisargaOverviewLightbox() {
             <FadeInView direction="left">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/images/nisarga/overview-left.jpg"
+                  src="/images/nisarga/overview-left.webp"
                   alt="Nisarga — aerial township view"
                   fill
                   className="object-cover"
@@ -42,7 +42,7 @@ export default function NisargaOverviewLightbox() {
                 onClick={() => setOpen(true)}
               >
                 <Image
-                  src="/images/nisarga/masterplan.jpg"
+                  src="/images/nisarga/masterplan.webp"
                   alt="Nisarga master plan"
                   fill
                   className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
@@ -88,7 +88,7 @@ export default function NisargaOverviewLightbox() {
               onClick={e => e.stopPropagation()}
             >
               <Image
-                src="/images/nisarga/masterplan.jpg"
+                src="/images/nisarga/masterplan.webp"
                 alt="Nisarga master plan"
                 fill
                 className="object-contain"
