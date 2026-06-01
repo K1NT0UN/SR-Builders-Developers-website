@@ -22,6 +22,22 @@ export const currentProjects: Project[] = [
       'A landmark gated township offering premium 4 & 5 BHK forestscape villas on 17+ acres in Kollur, one of Hyderabad\'s fastest-growing corridors. 50+ amenities, 2 clubhouses. RERA: PO22000007723.',
     targetCompletion: 'Villas: End of 2028',
   },
+  {
+    company: 'SR Builders and Developers',
+    name: 'Medchal Commercial',
+    location: 'Medchal, Hyderabad',
+    status: 'ONGOING',
+    type: 'Commercial',
+    description: '~1+ Acre commercial development in Medchal, Hyderabad.',
+  },
+  {
+    company: 'SR Builders and Developers',
+    name: 'Nagole Villas',
+    location: 'Nagole, Hyderabad',
+    status: 'ONGOING',
+    type: 'Residential',
+    description: '~10 acres of residential villa development in Nagole, Hyderabad.',
+  },
 ]
 
 export const pipelineProjects: Project[] = [
