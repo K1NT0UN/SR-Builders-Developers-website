@@ -31,7 +31,7 @@ export default function EnquirePage() {
         <FadeInView>
           <div className="max-w-3xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
             {[
-              { label: 'Headquarters', value: 'Hyderabad, Telangana' },
+              { label: 'Headquarters', value: 'Flat No. 109, First Floor, Aparna Green Homes Apt, Nanakramguda Rd, Financial District, Hyderabad – 500032' },
               { label: 'Phone', value: 'To be updated' },
               { label: 'Email', value: 'To be updated' },
             ].map(({ label, value }) => (

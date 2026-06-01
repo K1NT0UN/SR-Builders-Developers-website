@@ -45,7 +45,10 @@ export default function Footer() {
           <div>
             <h4 className="font-serif text-lg text-gold mb-5 tracking-wide">Contact</h4>
             <address className="not-italic space-y-2 text-sm text-parchment/60">
-              <p>Hyderabad, Telangana, India</p>
+              <p>Flat No. 109, First Floor, Aparna Green Homes Apartment,</p>
+              <p>Opp. Golf View Apartments, Nanakramguda Rd,</p>
+              <p>Financial District, Nanakramguda,</p>
+              <p>Hyderabad, Telangana – 500032</p>
               <p>Phone: To be updated</p>
               <p>Email: To be updated</p>
             </address>
