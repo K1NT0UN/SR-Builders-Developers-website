@@ -32,8 +32,8 @@ export default function EnquirePage() {
           <div className="max-w-3xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
             {[
               { label: 'Headquarters', value: 'Flat No. 109, First Floor, Aparna Green Homes Apt, Nanakramguda Rd, Financial District, Hyderabad – 500032' },
-              { label: 'Phone', value: 'To be updated' },
-              { label: 'Email', value: 'To be updated' },
+              { label: 'Phone', value: '+91 94922 39339' },
+              { label: 'Email', value: 'srbuildersnisarga@gmail.com' },
             ].map(({ label, value }) => (
               <div key={label}>
                 <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-2">{label}</p>

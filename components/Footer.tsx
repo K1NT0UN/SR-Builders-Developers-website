@@ -49,8 +49,8 @@ export default function Footer() {
               <p>Opp. Golf View Apartments, Nanakramguda Rd,</p>
               <p>Financial District, Nanakramguda,</p>
               <p>Hyderabad, Telangana – 500032</p>
-              <p>Phone: To be updated</p>
-              <p>Email: To be updated</p>
+              <a href="tel:+919492239339" className="block hover:text-parchment transition-colors duration-200">+91 94922 39339</a>
+              <a href="mailto:srbuildersnisarga@gmail.com" className="block hover:text-parchment transition-colors duration-200">srbuildersnisarga@gmail.com</a>
             </address>
             <div className="mt-6">
               <p className="text-xs tracking-widest uppercase text-parchment/40">Flagship Project</p>
