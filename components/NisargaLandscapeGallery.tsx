@@ -49,7 +49,7 @@ export default function NisargaLandscapeGallery() {
                   key={view.label}
                   onClick={() => setActive(i)}
                   className={`relative overflow-hidden cursor-pointer group ${
-                    i === 0 ? 'col-span-2 row-span-2 aspect-[16/10]' : 'aspect-square'
+                    i === 0 ? 'col-span-2 row-span-2' : 'aspect-square'
                   }`}
                 >
                   <Image
