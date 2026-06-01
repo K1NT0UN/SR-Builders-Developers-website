@@ -9,6 +9,7 @@ export interface Project {
   type: ProjectType | string
   description?: string
   targetCompletion?: string
+  brochureUrl?: string
 }
 
 export const currentProjects: Project[] = [

@@ -68,7 +68,7 @@ export default function ProjectsTabs({ current, pipeline, completed }: Props) {
                   key={i}
                   whileHover={{ y: -3, boxShadow: '0 16px 48px rgba(26,51,32,0.14)' }}
                   transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-                  className="max-w-3xl mx-auto bg-forest/5 border border-gold/40 p-10 relative group cursor-default hover:border-gold transition-all duration-300"
+                  className="max-w-3xl mx-auto mb-4 bg-parchment border border-gold/40 p-10 relative group cursor-default hover:border-gold transition-all duration-300"
                 >
                   <div className="absolute top-0 left-0 w-1 h-full bg-gold" />
                   <p className="text-[10px] tracking-[0.4em] uppercase text-forest font-bold mb-2">{p.company}</p>
@@ -79,20 +79,35 @@ export default function ProjectsTabs({ current, pipeline, completed }: Props) {
                   {p.description && (
                     <p className="text-charcoal-light leading-relaxed mb-6">{p.description}</p>
                   )}
-                  <div className="flex flex-wrap gap-6 items-center pt-4 border-t border-gold/20">
+                  <div className="flex flex-wrap gap-4 items-center pt-4 border-t border-gold/20">
                     <span className="px-4 py-1.5 border border-gold text-gold text-xs tracking-widest uppercase">
                       ONGOING
                     </span>
                     {p.targetCompletion && (
                       <p className="text-xs text-charcoal-light/60">{p.targetCompletion}</p>
                     )}
-                    <div className="ml-auto flex gap-5">
-                      <Link
-                        href="/projects/nisarga"
-                        className="text-forest text-xs tracking-widest uppercase border-b border-forest/30 pb-0.5 hover:text-gold hover:border-gold transition-colors font-semibold"
-                      >
-                        View Project →
-                      </Link>
+                    <div className="ml-auto flex flex-wrap gap-4 items-center">
+                      {p.brochureUrl ? (
+                        <a
+                          href={p.brochureUrl}
+                          download
+                          className="px-5 py-2 bg-gold text-forest text-xs tracking-widest uppercase font-semibold hover:bg-gold-dark transition-colors duration-200"
+                        >
+                          ↓ Download Brochure
+                        </a>
+                      ) : (
+                        <span className="px-5 py-2 border border-charcoal/20 text-charcoal/30 text-xs tracking-widest uppercase cursor-not-allowed">
+                          Brochure Coming Soon
+                        </span>
+                      )}
+                      {p.name === 'Nisarga' && (
+                        <Link
+                          href="/projects/nisarga"
+                          className="text-forest text-xs tracking-widest uppercase border-b border-forest/30 pb-0.5 hover:text-gold hover:border-gold transition-colors font-semibold"
+                        >
+                          View Project →
+                        </Link>
+                      )}
                       <Link
                         href="/enquire"
                         className="text-forest text-xs tracking-widest uppercase border-b border-gold pb-0.5 hover:text-gold transition-colors"
@@ -116,7 +131,7 @@ export default function ProjectsTabs({ current, pipeline, completed }: Props) {
                       key={i}
                       whileHover={{ y: -4, boxShadow: '0 20px 48px rgba(200,169,81,0.18)' }}
                       transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-                      className="border-2 border-gold bg-forest/4 p-10 relative group cursor-default overflow-hidden"
+                      className="border-2 border-gold bg-linen p-10 relative group cursor-default overflow-hidden"
                     >
                       {/* gold accent bar */}
                       <div className="absolute top-0 left-0 w-full h-1 bg-gold" />
@@ -162,7 +177,7 @@ export default function ProjectsTabs({ current, pipeline, completed }: Props) {
                     key={i}
                     whileHover={{ y: -3, boxShadow: '0 12px 36px rgba(26,51,32,0.12)' }}
                     transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-                    className={`bg-transparent border-2 ${pipelineBorderColors[i] ?? 'border-forest/30'} p-8 relative group cursor-default hover:bg-forest/[0.03] transition-all duration-300`}
+                    className={`bg-parchment border-2 ${pipelineBorderColors[i] ?? 'border-forest/30'} p-8 relative group cursor-default hover:bg-linen transition-all duration-300`}
                   >
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                       <div>
