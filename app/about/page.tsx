@@ -45,6 +45,14 @@ const leadership = [
     qualifications: null,
     bio: '',
   },
+  {
+    initials: 'CR',
+    role: 'Partner',
+    name: 'CHV Radha Krishna',
+    tagline: 'Partnership · Growth',
+    qualifications: null,
+    bio: '',
+  },
 ]
 
 
@@ -89,13 +97,14 @@ export default function AboutPage() {
               25 Years of Building <span className="font-light">with Purpose</span>
             </h2>
             <p className="text-charcoal-light leading-relaxed mb-5">
-              SR Builders and Developers is a Hyderabad-based real estate company with over 25 years of legacy in construction
-              and real estate development. We have delivered residential and commercial projects across Hyderabad,
-              earning a reputation for quality and on-time delivery.
+              Founded by Mr. Vasu Raavi, SR Builders and Developers has grown from a single-project venture into one of
+              Hyderabad's trusted residential developers — guided by a founding belief that a home is more than structure;
+              it is the setting for a family's most important moments.
             </p>
             <p className="text-charcoal-light leading-relaxed">
-              Built on a customer-first philosophy, with a strong pipeline of upcoming projects across Hyderabad,
-              SR Builders and Developers is poised for its next phase of significant growth.
+              Every project we undertake is backed by in-house engineering, transparent dealings, and an unwavering
+              commitment to finish quality. As we enter our next chapter with Nisarga Villas, we bring the same
+              rigour — now at a scale that matches our ambition.
             </p>
           </FadeInView>
 
@@ -125,7 +134,7 @@ export default function AboutPage() {
               and rooted in the communities we serve.&rdquo;
             </blockquote>
             <p className="text-parchment/60 text-sm">
-              Cities of Operation: Hyderabad · Vizag · Bangalore
+              Hyderabad, Telangana
             </p>
           </FadeInView>
         </div>

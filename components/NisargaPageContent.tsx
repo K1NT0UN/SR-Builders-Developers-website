@@ -248,13 +248,13 @@ export default function NisargaPageContent() {
             </FadeInView>
             <FadeInView direction="right" className="bg-forest p-10 lg:p-14 flex flex-col justify-center">
               <p className="text-xs tracking-[0.4em] uppercase text-gold/60 mb-3">Clubhouse 1</p>
-              <h3 className="font-serif text-4xl text-parchment mb-4">Club N'Spire</h3>
+              <h3 className="font-serif text-4xl text-parchment mb-4">Club N'finity</h3>
               <p className="text-parchment/60 leading-relaxed mb-2 text-sm">
-                Every visit becomes a passage into calm, where zen-like balance, deep detox, and pure rejuvenation weave into a ritual. To immerse here is to indulge in atmospheres shaped for body, mind and spirit.
+                Evolved luxury speaks here in the language of privilege. Every chamber carries its own stature, every setting rises into an experience that belongs to the chosen few.
               </p>
-              <p className="text-gold/70 text-xs tracking-widest uppercase mb-6">12 World-Class Amenities</p>
+              <p className="text-gold/70 text-xs tracking-widest uppercase mb-6">6 Exclusive Amenities</p>
               <div className="grid grid-cols-2 gap-2">
-                {nspireAmenities.map((a) => (
+                {nfinityAmenities.map((a) => (
                   <div key={a} className="flex items-center gap-2 text-sm text-parchment/70">
                     <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
                     {a}
@@ -267,13 +267,13 @@ export default function NisargaPageContent() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden">
             <FadeInView direction="left" className="bg-charcoal p-10 lg:p-14 flex flex-col justify-center lg:order-1">
               <p className="text-xs tracking-[0.4em] uppercase text-gold/60 mb-3">Clubhouse 2</p>
-              <h3 className="font-serif text-4xl text-parchment mb-4">Club N'finity</h3>
+              <h3 className="font-serif text-4xl text-parchment mb-4">Club N'Spire</h3>
               <p className="text-parchment/60 leading-relaxed mb-2 text-sm">
-                Evolved luxury speaks here in the language of privilege. Every chamber carries its own stature, every setting rises into an experience that belongs to the chosen few.
+                Every visit becomes a passage into calm, where zen-like balance, deep detox, and pure rejuvenation weave into a ritual. To immerse here is to indulge in atmospheres shaped for body, mind and spirit.
               </p>
-              <p className="text-gold/70 text-xs tracking-widest uppercase mb-6">50+ Amenities Combined Across Both Clubhouses</p>
+              <p className="text-gold/70 text-xs tracking-widest uppercase mb-6">12 World-Class Amenities</p>
               <div className="grid grid-cols-2 gap-2">
-                {nfinityAmenities.map((a) => (
+                {nspireAmenities.map((a) => (
                   <div key={a} className="flex items-center gap-2 text-sm text-parchment/70">
                     <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
                     {a}
