@@ -3,6 +3,7 @@ import { Oswald, Barlow } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import FloatingWhatsApp from '@/components/FloatingWhatsApp'
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -19,9 +20,9 @@ const barlow = Barlow({
 })
 
 export const metadata: Metadata = {
-  title: 'SRSM Group | Excellence in Construction & Real Estate',
+  title: 'SR Builders and Developers | Premium Homes in Hyderabad',
   description:
-    'SRSM Group — 25+ years of legacy in construction and real estate across Hyderabad, Vizag, and Bangalore. 24+ completed projects, debt-free, quality-first.',
+    'SR Builders and Developers — 25+ years of building quality homes in Hyderabad. Explore Nisarga Villas, our flagship 4 & 5 BHK gated township in Kollur.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <FloatingWhatsApp />
       </body>
     </html>
   )
