@@ -43,7 +43,7 @@ const leadership = [
     name: 'Jagan Reddy',
     tagline: 'Finance · Compliance · Governance',
     qualifications: 'Chartered Accountant (CA)',
-    bio: 'Jagan Reddy is a Chartered Accountant and Director with extensive experience in financial management, legal compliance, and stakeholder liaisoning within the construction sector. He has a proven track record of establishing robust financial controls, delivering accurate project accounting and cash-flow forecasting, and optimising cost management across large-scale construction projects. Well-versed in contract review, statutory compliance, and risk mitigation, Jagan ensures adherence to regulatory requirements, procurement norms, and contractor agreements. An effective communicator and relationship-builder, he manages relationships with banks, insurers, auditors, regulators, subcontractors, and joint-venture partners to secure timely approvals and financing. His strategic oversight of budgeting, statutory reporting, and governance supports operational efficiency, timely project delivery, and long-term value creation for clients and shareholders.',
+    bio: 'A Chartered Accountant with deep expertise in construction finance, Jagan Reddy oversees financial controls, project accounting, and statutory compliance across SR Builders\' operations. He manages relationships with banks, auditors, and regulators to secure timely approvals and financing, and ensures every project is delivered within budget and in full adherence to legal and governance requirements.',
   },
   {
     initials: 'CR',
