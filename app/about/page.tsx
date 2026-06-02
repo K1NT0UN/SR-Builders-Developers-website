@@ -27,7 +27,7 @@ const leadership = [
     name: 'Rabani',
     tagline: 'Operations · Oversight',
     qualifications: null,
-    bio: 'Rabani oversees day-to-day operations across SR Builders’ active sites, ensuring every project moves from groundwork to handover with discipline, accountability, and close attention to detail.',
+    bio: ‘Rabani oversees day-to-day operations across SR Builders\’ active sites, ensuring every project moves from groundwork to handover with discipline, accountability, and close attention to detail.’,
   },
   {
     initials: 'YR',
@@ -35,7 +35,7 @@ const leadership = [
     name: 'Yashwanth Raavi',
     tagline: 'Projects · Development',
     qualifications: null,
-    bio: 'Yashwanth Raavi leads project development and execution, turning plans into delivered homes while safeguarding the quality and timelines that define the company’s reputation.',
+    bio: ‘Yashwanth Raavi leads project development and execution, turning plans into delivered homes while safeguarding the quality and timelines that define the company\’s reputation.’,
   },
   {
     initials: ‘JR’,
@@ -51,7 +51,7 @@ const leadership = [
     name: 'CHV Radha Krishna',
     tagline: 'Partnership · Growth',
     qualifications: null,
-    bio: 'A trusted partner in the company’s journey, CHV Radha Krishna supports SR Builders’ growth through long-standing relationships and a shared commitment to building well and building honestly.',
+    bio: ‘A trusted partner in the company\’s journey, CHV Radha Krishna supports SR Builders\’ growth through long-standing relationships and a shared commitment to building well and building honestly.’,
   },
 ]
 
