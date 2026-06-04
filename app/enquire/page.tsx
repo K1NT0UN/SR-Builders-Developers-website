@@ -1,5 +1,5 @@
 import FadeInView from '@/components/FadeInView'
-import EnquireClient from '@/components/EnquireClient'
+import EnquireForms from '@/components/EnquireForms'
 
 export default function EnquirePage() {
   return (
@@ -21,8 +21,8 @@ export default function EnquirePage() {
 
       {/* Forms */}
       <section className="bg-parchment py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <EnquireClient />
+        <div className="max-w-lg mx-auto">
+          <EnquireForms />
         </div>
       </section>
 

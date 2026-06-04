@@ -1,11 +1,14 @@
-# AntiGravity — Agent Handoff README
-*Last updated: 2026-05-15*
+# SR Builders & Developers — Agent Handoff README
+
+*Last updated: 2026-06-02*
 
 ---
 
 ## What This Workspace Is
 
-This is the **SR Builders and Developers website project** — a Next.js 16 site for a Hyderabad-based construction and real estate company. The working directory is `~/Desktop/AntiGravity/construction-site/`.
+The **SR Builders and Developers website** — a Next.js 16 site for the Hyderabad-based construction and real estate company, flagship project **Nisarga**. Working directory: `~/Desktop/AntiGravity/construction-site/`.
+
+The parent group site lives separately at `~/Desktop/AntiGravity/srsm-group-website/`.
 
 ---
 
@@ -13,10 +16,11 @@ This is the **SR Builders and Developers website project** — a Next.js 16 site
 
 | Item | Status |
 |---|---|
-| GitHub repo | github.com/K1NT0UN/srsm-group-website |
-| Vercel deployment | Auto-deploys on push to `main` |
+| GitHub repo | github.com/K1NT0UN/SR-Builders-Developers-website |
+| Vercel deployment | Live on Vercel default domain — auto-deploys on push to `main`. Custom GoDaddy domain not yet connected. |
 | Supabase project | oobbgnvmapsanaqbpzvi.supabase.co |
 | Supabase `enquiries` table | ✅ Created and live |
+| Working tree | Clean, synced to `origin/main` |
 
 ---
 
@@ -24,11 +28,11 @@ This is the **SR Builders and Developers website project** — a Next.js 16 site
 
 - **Next.js 16.2.6** — App Router, TypeScript
 - **Tailwind CSS v4** — CSS-based config in `app/globals.css` (no `tailwind.config.ts`)
-- **Framer Motion** — scroll reveals, tab transitions, hover lift animations
-- **GSAP + ScrollTrigger** — hero text animation, stat counters
+- **Framer Motion** — scroll reveals, tab transitions, hover lift, Ken Burns hero, WhatsApp button
+- **GSAP + ScrollTrigger** — stat counters (`StatsSection`)
 - **Supabase** — enquiry form submissions (`@supabase/ssr`)
 
-Read `CLAUDE.md` at workspace root and `construction-site/AGENTS.md` before editing.
+Read `CLAUDE.md` at workspace root and `AGENTS.md` before editing.
 
 ---
 
@@ -46,21 +50,28 @@ Defined in `app/globals.css` via `@theme`:
 
 **Fonts:** Oswald (headings via `font-serif`) + Barlow (body via `font-sans`)
 **Rule:** Never use cool grey. Brand is entirely warm-toned.
-**Navbar:** Off-white (`parchment`) background — use dark logo (`sr-builders-logo.png`). Mobile menu is forest-dark — light logo not shown in dropdown (header logo remains visible).
+**Navbar:** Parchment background, dark logo (`sr-builders-logo.png`). Mobile menu is forest-dark.
+
+---
+
+## Contact
+
+- **Phone:** `+91 94922 39339` / `+91 99899 90256`
+- **Email:** `srbuildersnisarga@gmail.com` / `sr.sm.group.buildersanddevelopers@gmail.com`
+- **WhatsApp:** `wa.me/919989990256` (floating button + inline contact strip)
 
 ---
 
 ## Logo Files
 
-Both are in `construction-site/public/images/`:
+In `public/images/`:
 
 | File | Usage | Notes |
 |---|---|---|
 | `sr-builders-logo.png` | Navbar, light backgrounds | Dark maroon mark + dark charcoal text, transparent bg |
 | `sr-builders-logo-light.png` | Footer, dark backgrounds | Dark maroon mark + parchment text, transparent bg |
 
-Source: `~/Desktop/SRSM Profile/SR B & D Logo/SR Builders Logo_pdf.pdf.png` (horizontal layout, 2000x1545)
-Processing script: Pillow pixel loop — remove white bg, then for light variant replace low-saturation dark pixels with parchment.
+Source: `~/Desktop/SRSM Profile/SR B & D Logo/SR Builders Logo_pdf.pdf.png` (2000x1545, horizontal).
 
 ---
 
@@ -70,112 +81,78 @@ Processing script: Pillow pixel loop — remove white bg, then for light variant
 construction-site/
 ├── app/
 │   ├── globals.css              ← Brand colors + fonts (Tailwind v4 @theme)
-│   ├── layout.tsx               ← Root layout, Oswald + Barlow fonts
-│   ├── page.tsx                 ← Homepage — renders NisargaPageContent directly
-│   ├── about/page.tsx           ← About + Leadership (no Team section), 3 entities
+│   ├── layout.tsx               ← Root layout, Oswald + Barlow, Navbar + Footer + FloatingWhatsApp, site metadata
+│   ├── page.tsx                 ← Homepage — Nisarga content + inline contact strip
+│   ├── about/page.tsx           ← About + Leadership (fresh voice, distinct from SRSM site)
 │   ├── projects/
-│   │   ├── page.tsx             ← Projects tabs (current/pipeline/completed)
-│   │   └── nisarga/page.tsx     ← Also renders NisargaPageContent (same as homepage)
+│   │   ├── page.tsx             ← Projects tabs (current / pipeline / completed)
+│   │   └── nisarga/page.tsx     ← Renders NisargaPageContent
 │   └── enquire/page.tsx         ← Enquiry + site visit forms → Supabase
 ├── components/
-│   ├── Navbar.tsx               ← Off-white bg, forest green links, dark logo
-│   ├── Footer.tsx               ← Forest bg, light logo, 3 entities listed
-│   ├── HeroSection.tsx          ← GSAP hero (orphaned — no longer used on homepage)
-│   ├── StatsSection.tsx         ← GSAP counters: 25yr, 24 projects, 3 entities, 30 staff
-│   ├── FadeInView.tsx           ← Framer Motion scroll reveal wrapper
-│   ├── NisargaPageContent.tsx   ← Full Nisarga page JSX (shared by / and /projects/nisarga)
-│   ├── ProjectsTabs.tsx         ← Tab switching, hover animations, Highrise featured tile
-│   └── EnquireClient.tsx        ← Supabase form submission (createClient inside handlers)
+│   ├── Navbar.tsx               ← Parchment bg, forest links, dark logo
+│   ├── Footer.tsx               ← Forest bg, light logo, entities
+│   ├── FloatingWhatsApp.tsx     ← Floating WhatsApp button (Framer Motion)
+│   ├── StatsSection.tsx         ← GSAP counters
+│   ├── FadeInView.tsx           ← Framer Motion scroll reveal
+│   ├── NisargaPageContent.tsx   ← Full Nisarga page JSX
+│   ├── NisargaHeroCarousel.tsx  ← Ken Burns hero carousel
+│   ├── NisargaOverviewLightbox.tsx ← Aerial + masterplan lightbox
+│   ├── NisargaLandscapeGallery.tsx ← Grid gallery, tab selector
+│   ├── ProjectsTabs.tsx         ← Tab switching, hover animations, brochure buttons
+│   └── EnquireClient.tsx        ← Supabase form submission
 ├── lib/
 │   ├── projects.ts              ← All project data
 │   └── supabase/client.ts + server.ts
 ├── public/images/
 │   ├── sr-builders-logo.png
 │   ├── sr-builders-logo-light.png
-│   └── nisarga/                 ← 15 brochure renders
+│   └── nisarga/                 ← Brochure renders (9 heavy JPEGs swapped to WebP, ~29 MB saved)
 └── supabase/migrations/001_enquiries.sql
 ```
+
+> Note: the previously orphaned `HeroSection.tsx` was deleted (commit f512794). It no longer exists.
 
 ---
 
 ## What's Been Built
 
 ### Pages
-- ✅ **Homepage (`/`)** — IS the Nisarga Villas page (full brochure content, 13 sections). Navbar/footer present.
-- ✅ **`/projects/nisarga`** — Same content as homepage via shared `NisargaPageContent` component
-- ✅ **About** — Mission, 25yr history, Core Strengths, Mission quote, 3 active Group Entities, Leadership (6 people with hover lift), no Team section
-- ✅ **Projects** — Tabs: Current (Nisarga Villas) + Pipeline (Highrise Apartments featured + 6 others) / Completed (24 projects). Hover animations throughout.
+- ✅ **Homepage (`/`)** — Nisarga content + inline contact strip. Navbar/footer present.
+- ✅ **`/projects/nisarga`** — Same Nisarga content via shared `NisargaPageContent`
+- ✅ **About** — Mission, history, core strengths, entities, Leadership (fresh copy, distinct voice from SRSM site)
+- ✅ **Projects** — Tabs: Current (Nisarga) + Pipeline + Completed (24). Hover animations, brochure buttons.
 - ✅ **Enquire** — Quick enquiry + site visit forms → Supabase `enquiries` table
-
-### Nisarga Page Sections
-1. Hero — entrance gate render, CTAs (Book Site Visit, Explore Villas)
-2. Stats bar — 17+ Acres, 50+ Amenities, 4,000 Acres Greenery, 2 Clubhouses, 800m Frontage, G+2
-3. Vision — forest lifestyle image + "Wood Morning" copy
-4. Architecture — streetscape full-bleed
-5. Aerial + Master Plan — side by side
-6. Villa Types — 200 / 239 / 300 sq yd cards with per-floor area statements
-7. Streetscape full-bleed (rain render)
-8. Interiors collage on charcoal bg
-9. Clubhouses — Club N'Spire + Club N'finite with amenity lists
-10. Outdoor amenities — collage + 9 labels
-11. Specifications table — 15 categories
-12. Location — map + 5 highlight categories
-13. CTA — gold section, RERA, phone, email, two buttons
-
-### Projects Data (`lib/projects.ts`)
-**Current:** Nisarga Villas (Integrated Township — Villas, ongoing, 2028)
-**Pipeline (7 total):**
-1. Highrise Apartments — SR Builders, Kollur, featured tile, **name TBD**, 2030
-2. Borampet Villas — ~30 acres
-3. Nagole Villas — ~10 acres
-4. Medchal Commercial
-5. Bashirbag Commercial — 60k sqft
-6. Chandanagar Commercial — 30k sqft
-7. Lingampally Residences — 120 flats
-
-**Completed:** 24 projects across SR Builders, SM Builders, SM Builders and Developers, SM Projects, SM Constructions, SM Infra Developers
+- ✅ **WhatsApp** — Floating button + inline contact strip, shipped (commit 586fdef)
 
 ### Group Entities (3 active)
 1. SR Builders and Developers — Residential & Villas
 2. SM Builders — Residential & Commercial
 3. SM Builders and Developers — Residential
 
+### Projects Data (`lib/projects.ts`)
+**Current:** Nisarga Villas (integrated township, ongoing, 2028)
+**Pipeline:** Highrise Apartments (Kollur, **name TBD**, 2030) · Borampet Villas · Nagole Villas · Medchal Commercial · Bashirbag Commercial · Chandanagar Commercial · Lingampally Residences
+**Completed:** 24 projects across SR Builders, SM Builders, SM Builders & Developers, SM Projects, SM Constructions, SM Infra Developers
+
 ---
 
 ## What Still Needs To Be Done
 
-### 1. Highrise Apartments — Final Name
-`lib/projects.ts` line ~30: `name: 'Highrise Apartments'`. Update once brand name decided. The "Name TBD" badge in ProjectsTabs will still show until removed.
-
-### 2. Leadership Photos
-Placeholder initials circles for all 6 leadership members. Upload real photos to Supabase Storage, update `app/about/page.tsx` `<img>` src.
-
-### 3. Qualifications + Bios (About Page)
-- Yashwanth Raavi, Raavi Rishi Chowdary, Manaswitha Raavi: `qualifications: '[Qualifications to be added]'`
-- Most members: `bio: ''` — one sentence each
-
-### 4. Contact Details
-Footer (`components/Footer.tsx`) and Enquire page (`app/enquire/page.tsx`):
-- Phone: "To be updated"
-- Email: "To be updated"
-
-### 5. Supabase `media_items` Table
-Schema in workspace `CLAUDE.md`. Not yet created. Needed for CMS-based media management.
-
-### 6. Hero Images for HeroSection
-`components/HeroSection.tsx` references `/images/hero-1.jpg` through `hero-5.jpg` which don't exist. This component is currently orphaned (not used). Either delete it or wire up real images.
-
-### 7. Highrise Apartments Dedicated Page
-Once brand name is decided, build `/projects/highrise` page similar to Nisarga page.
+1. **Highrise Apartments — final name** — `lib/projects.ts`; "Name TBD" badge shows until updated.
+2. **Leadership photos** — placeholder initials circles; upload real photos + update `app/about/page.tsx`.
+3. **Qualifications + bios** — several leadership members have `'[Qualifications to be added]'` and empty bios.
+4. **Supabase `media_items` table** — schema in workspace `CLAUDE.md`; not yet created (for CMS-based media).
+5. **Highrise dedicated page** — `/projects/highrise`, once brand name is decided.
+6. **Connect custom GoDaddy domain** — site is live on the Vercel default domain; point the purchased GoDaddy domain at it (add domain in Vercel dashboard, then A record + CNAME in GoDaddy DNS).
 
 ---
 
 ## Supabase
 
 - **URL:** `https://oobbgnvmapsanaqbpzvi.supabase.co`
-- **Anon key:** in `construction-site/.env.local` (gitignored + set in Vercel env vars)
+- **Anon key:** in `.env.local` (gitignored + set in Vercel env vars — never committed)
 - **Tables live:** `enquiries`
-- **Storage:** Create bucket `media` (public) for team photos + future media
+- **Storage:** create bucket `media` (public) for team photos + future media
 
 ---
 
@@ -183,8 +160,8 @@ Once brand name is decided, build `/projects/highrise` page similar to Nisarga p
 
 | Path | Contents |
 |---|---|
-| `~/Desktop/SRSM Profile/SR B & D Logo/SR Builders Logo_pdf.pdf.png` | Current logo source (2000x1545 PNG, horizontal) |
+| `~/Desktop/SRSM Profile/SR B & D Logo/SR Builders Logo_pdf.pdf.png` | Logo source (2000x1545 PNG) |
 | `~/Desktop/SRSM Profile/Nisarga_Brochure_APRL_21_26_.pdf` | Full Nisarga brochure (31 pages) |
-| `~/Desktop/Nisarga_Project_Website_Assets/` | All extracted brochure images (15 in `public/images/nisarga/`) |
-| `~/Desktop/Nisarga_Project_Website_Assets/Website_Content_References/website_copy.md` | Full verified Nisarga website copy |
-| `~/Desktop/Nisarga_Project_Website_Assets/Website_Content_References/IMAGE_REFERENCE_MAP.txt` | Every brochure page mapped to image type + placement |
+| `~/Desktop/Nisarga_Project_Website_Assets/` | All extracted brochure images |
+| `~/Desktop/Nisarga_Project_Website_Assets/Website_Content_References/website_copy.md` | Verified Nisarga website copy |
+| `~/Desktop/Nisarga_Project_Website_Assets/Website_Content_References/IMAGE_REFERENCE_MAP.txt` | Brochure page → image mapping |

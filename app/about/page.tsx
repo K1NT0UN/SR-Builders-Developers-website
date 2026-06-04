@@ -22,22 +22,6 @@ const leadership = [
     bio: 'Starting from humble beginnings in Nellore, Andhra Pradesh, Mr. Vasu Raavi built SR Builders and Developers from the ground up over more than two decades. His hands-on involvement — from land acquisition to project delivery — has shaped the company\'s culture of quality and integrity.',
   },
   {
-    initials: 'R',
-    role: 'Co-Director',
-    name: 'Rabani',
-    tagline: 'Operations · Oversight',
-    qualifications: null,
-    bio: 'Rabani oversees day-to-day operations across SR Builders\' active sites, ensuring every project moves from groundwork to handover with discipline, accountability, and close attention to detail.',
-  },
-  {
-    initials: 'YR',
-    role: 'Co-Director',
-    name: 'Yashwanth Raavi',
-    tagline: 'Projects · Development',
-    qualifications: null,
-    bio: 'Yashwanth Raavi leads project development and execution, turning plans into delivered homes while safeguarding the quality and timelines that define the company\'s reputation.',
-  },
-  {
     initials: 'JR',
     role: 'Director',
     name: 'Jagan Reddy',
@@ -46,12 +30,28 @@ const leadership = [
     bio: 'A Chartered Accountant with deep expertise in construction finance, Jagan Reddy oversees financial controls, project accounting, and statutory compliance across SR Builders\' operations. He manages relationships with banks, auditors, and regulators to secure timely approvals and financing, and ensures every project is delivered within budget and in full adherence to legal and governance requirements.',
   },
   {
+    initials: 'R',
+    role: 'Co-Director',
+    name: 'Rabani',
+    tagline: 'Operations · Oversight',
+    qualifications: null,
+    bio: 'Rabani oversees day-to-day operations across SR Builders\' active sites, ensuring every project moves from groundwork to handover with discipline, accountability, and close attention to detail.',
+  },
+  {
     initials: 'CR',
     role: 'Partner',
     name: 'CHV Radha Krishna',
     tagline: 'Partnership · Growth',
     qualifications: null,
     bio: 'A trusted partner in the company\'s journey, CHV Radha Krishna supports SR Builders\' growth through long-standing relationships and a shared commitment to building well and building honestly.',
+  },
+  {
+    initials: 'YR',
+    role: 'Co-Director',
+    name: 'Yashwanth Raavi',
+    tagline: 'Projects · Development',
+    qualifications: null,
+    bio: 'Yashwanth Raavi leads project development and execution, turning plans into delivered homes while safeguarding the quality and timelines that define the company\'s reputation.',
   },
 ]
 

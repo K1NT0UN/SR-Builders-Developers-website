@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { Project } from '@/lib/projects'
+import BrochureButton from '@/components/BrochureButton'
 
 interface Props {
   current: Project[]
@@ -88,13 +89,11 @@ export default function ProjectsTabs({ current, pipeline, completed }: Props) {
                     )}
                     <div className="ml-auto flex flex-wrap gap-4 items-center">
                       {p.brochureUrl ? (
-                        <a
-                          href={p.brochureUrl}
-                          download
+                        <BrochureButton
+                          brochureUrl={p.brochureUrl}
+                          projectName={p.name}
                           className="px-5 py-2 bg-gold text-forest text-xs tracking-widest uppercase font-semibold hover:bg-gold-dark transition-colors duration-200"
-                        >
-                          ↓ Download Brochure
-                        </a>
+                        />
                       ) : (
                         <span className="px-5 py-2 border border-charcoal/20 text-charcoal/30 text-xs tracking-widest uppercase cursor-not-allowed">
                           Brochure Coming Soon
