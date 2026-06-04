@@ -13,8 +13,6 @@ import { submitToGoogleForm } from '@/lib/submitForm'
 
 type Variant = 'enquiry' | 'siteVisit'
 
-const RECAPTCHA_ID = 'recaptcha-container'
-
 export default function LeadForm({ variant }: { variant: Variant }) {
   const form = variant === 'siteVisit' ? siteVisitForm : enquiryForm
 
@@ -40,7 +38,7 @@ export default function LeadForm({ variant }: { variant: Variant }) {
     if (!mobileValid) return setError('Enter a valid 10-digit mobile number.')
     setBusy(true)
     try {
-      await sendOtp(e164, RECAPTCHA_ID)
+      await sendOtp(e164)
       setOtpSent(true)
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Could not send OTP. Try again.')
@@ -192,8 +190,6 @@ export default function LeadForm({ variant }: { variant: Variant }) {
         )}
       </div>
 
-      {/* invisible reCAPTCHA mount point for Firebase Phone Auth */}
-      <div id={RECAPTCHA_ID} />
     </div>
   )
 }
