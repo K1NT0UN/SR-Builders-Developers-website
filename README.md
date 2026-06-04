@@ -1,6 +1,6 @@
 # SR Builders & Developers — Agent Handoff README
 
-*Last updated: 2026-06-02*
+*Last updated: 2026-06-04*
 
 ---
 
@@ -20,6 +20,9 @@ The parent group site lives separately at `~/Desktop/AntiGravity/srsm-group-webs
 | Vercel deployment | Live on Vercel default domain — auto-deploys on push to `main`. Custom GoDaddy domain not yet connected. |
 | Supabase project | oobbgnvmapsanaqbpzvi.supabase.co |
 | Supabase `enquiries` table | ✅ Created and live |
+| Supabase `media_items` table | ✅ Created and live |
+| Supabase `media` bucket | ✅ Created, public |
+| MSG91 OTP | ✅ Integrated (server-side API routes). Vercel env vars still need to be added. |
 | Working tree | Clean, synced to `origin/main` |
 
 ---
@@ -30,8 +33,8 @@ The parent group site lives separately at `~/Desktop/AntiGravity/srsm-group-webs
 - **Tailwind CSS v4** — CSS-based config in `app/globals.css` (no `tailwind.config.ts`)
 - **Framer Motion** — scroll reveals, tab transitions, hover lift, Ken Burns hero, WhatsApp button
 - **GSAP + ScrollTrigger** — stat counters (`StatsSection`)
-- **Supabase** — enquiry form submissions and CMS media (`@supabase/ssr`)
-- **MSG91** — server-side OTP SMS verification for lead forms
+- **Supabase** — enquiry form submissions and CMS image storage (`@supabase/ssr`)
+- **MSG91** — server-side OTP SMS verification for brochure downloads
 
 Read `CLAUDE.md` at workspace root and `AGENTS.md` before editing.
 
@@ -81,37 +84,50 @@ Source: `~/Desktop/SRSM Profile/SR B & D Logo/SR Builders Logo_pdf.pdf.png` (200
 ```
 construction-site/
 ├── app/
-│   ├── globals.css              ← Brand colors + fonts (Tailwind v4 @theme)
-│   ├── layout.tsx               ← Root layout, Oswald + Barlow, Navbar + Footer + FloatingWhatsApp, site metadata
-│   ├── page.tsx                 ← Homepage — Nisarga content + inline contact strip
-│   ├── about/page.tsx           ← About + Leadership (fresh voice, distinct from SRSM site)
+│   ├── globals.css                  ← Brand colors + fonts (Tailwind v4 @theme)
+│   ├── layout.tsx                   ← Root layout, Oswald + Barlow, Navbar + Footer + FloatingWhatsApp
+│   ├── page.tsx                     ← Homepage — Nisarga content + inline contact strip
+│   ├── about/page.tsx               ← About + Leadership (order: Vasu, Jagan, Rabani, Radha Krishna, Yashwanth)
 │   ├── projects/
-│   │   ├── page.tsx             ← Projects tabs (current / pipeline / completed)
-│   │   └── nisarga/page.tsx     ← Renders NisargaPageContent
-│   └── enquire/page.tsx         ← Enquiry + site visit forms → Supabase
+│   │   ├── page.tsx                 ← Projects tabs (current / pipeline / completed with photo placeholders)
+│   │   └── nisarga/page.tsx         ← Renders NisargaPageContent
+│   ├── enquire/page.tsx             ← Enquiry + site visit forms (no OTP) + contact info
+│   └── api/
+│       └── otp/
+│           ├── send/route.ts        ← Server-side MSG91 send OTP API
+│           └── verify/route.ts      ← Server-side MSG91 verify OTP API
 ├── components/
-│   ├── Navbar.tsx               ← Parchment bg, forest links, dark logo
-│   ├── Footer.tsx               ← Forest bg, light logo, entities
-│   ├── FloatingWhatsApp.tsx     ← Floating WhatsApp button (Framer Motion)
-│   ├── StatsSection.tsx         ← GSAP counters
-│   ├── FadeInView.tsx           ← Framer Motion scroll reveal
-│   ├── NisargaPageContent.tsx   ← Full Nisarga page JSX
-│   ├── NisargaHeroCarousel.tsx  ← Ken Burns hero carousel
-│   ├── NisargaOverviewLightbox.tsx ← Aerial + masterplan lightbox
-│   ├── NisargaLandscapeGallery.tsx ← Grid gallery, tab selector
-│   ├── ProjectsTabs.tsx         ← Tab switching, hover animations, brochure buttons
-│   └── EnquireClient.tsx        ← Supabase form submission
+│   ├── Navbar.tsx                   ← Parchment bg, forest links, dark logo
+│   ├── Footer.tsx                   ← Forest bg, light logo, entities
+│   ├── FloatingWhatsApp.tsx         ← Floating WhatsApp button (Framer Motion)
+│   ├── StatsSection.tsx             ← GSAP counters
+│   ├── FadeInView.tsx               ← Framer Motion scroll reveal
+│   ├── NisargaPageContent.tsx       ← Full Nisarga page JSX (11 sections)
+│   ├── NisargaHeroCarousel.tsx      ← Ken Burns hero carousel
+│   ├── NisargaOverviewLightbox.tsx  ← Aerial + masterplan lightbox
+│   ├── NisargaLandscapeGallery.tsx  ← Grid gallery, tab selector
+│   ├── ProjectsTabs.tsx             ← Tab switching, hover animations, brochure buttons
+│   ├── EnquireForms.tsx             ← Tab switcher for Enquiry / Site Visit forms
+│   ├── LeadForm.tsx                 ← Shared form UI (name, mobile, email — no OTP for enquiry/site visit)
+│   ├── BrochureButton.tsx           ← Gated brochure modal — requires MSG91 OTP to unlock download
+│   └── EnquireClient.tsx            ← Legacy Supabase form (kept for reference)
 ├── lib/
-│   ├── projects.ts              ← All project data
-│   └── supabase/client.ts + server.ts
+│   ├── projects.ts                  ← All project data (current / pipeline / completed)
+│   ├── firebase.ts                  ← Firebase app init (gracefully disabled if no API key)
+│   ├── leadConfig.ts                ← MSG91 config + Google Form URLs (PASTE FORM URLs HERE)
+│   ├── otp.ts                       ← sendOtp / verifyOtp — calls /api/otp/* routes (MSG91)
+│   ├── submitForm.ts                ← Submits lead data to Google Forms (no-cors)
+│   └── supabase/
+│       ├── client.ts
+│       └── server.ts
 ├── public/images/
 │   ├── sr-builders-logo.png
 │   ├── sr-builders-logo-light.png
-│   └── nisarga/                 ← Brochure renders (9 heavy JPEGs swapped to WebP, ~29 MB saved)
-└── supabase/migrations/001_enquiries.sql
+│   └── nisarga/                     ← Brochure renders (WebP, ~29 MB saved vs JPEG)
+└── supabase/migrations/
+    ├── 001_enquiries.sql
+    └── 002_media_items.sql
 ```
-
-> Note: the previously orphaned `HeroSection.tsx` was deleted (commit f512794). It no longer exists.
 
 ---
 
@@ -119,11 +135,12 @@ construction-site/
 
 ### Pages
 - ✅ **Homepage (`/`)** — Nisarga content + inline contact strip. Navbar/footer present.
-- ✅ **`/projects/nisarga`** — Same Nisarga content via shared `NisargaPageContent`
-- ✅ **About** — Mission, history, core strengths, entities, Leadership (fresh copy, distinct voice from SRSM site)
-- ✅ **Projects** — Tabs: Current (Nisarga) + Pipeline + Completed (24). Hover animations, brochure buttons, and photo placeholders on completed tiles.
-- ✅ **Enquire** — Quick enquiry + site visit forms → Supabase `enquiries` table + MSG91 OTP verification
-- ✅ **WhatsApp** — Floating button + inline contact strip, shipped (commit 586fdef)
+- ✅ **`/projects/nisarga`** — Full Nisarga landing page via shared `NisargaPageContent`
+- ✅ **About** — Mission, history, core strengths, entities, Leadership (order: Vasu, Jagan, Rabani, Radha Krishna, Yashwanth)
+- ✅ **Projects** — Tabs: Current (Nisarga only) + Pipeline + Completed (24, with image placeholder tiles)
+- ✅ **Enquire** — Quick Enquiry + Site Visit forms (no OTP required) with contact info strip
+- ✅ **Brochure Download** — OTP-gated via MSG91 (`BrochureButton.tsx`)
+- ✅ **WhatsApp** — Floating button + inline contact strip
 
 ### Group Entities (3 active)
 1. SR Builders and Developers — Residential & Villas
@@ -133,16 +150,20 @@ construction-site/
 ### Projects Data (`lib/projects.ts`)
 **Current:** Nisarga Villas (integrated township, ongoing, 2028)
 **Pipeline:** Highrise Apartments (Kollur, **name TBD**, 2030) · Borampet Villas · Bashirbag Commercial · Chandanagar Commercial · Lingampally Residences
-**Completed:** 24 projects across SR Builders, SM Builders, SM Builders & Developers, SM Projects, SM Constructions, SM Infra Developers (photo placeholders added)
+**Completed:** 24 projects across SR Builders, SM Builders, SM Builders & Developers, SM Projects, SM Constructions, SM Infra Developers (photo placeholder tiles live)
 
 ---
 
 ## What Still Needs To Be Done
 
-1. **Highrise Apartments — final name** — `lib/projects.ts`; "Name TBD" badge shows until updated.
-2. **Leadership photos** — placeholder initials circles; upload real photos + update `app/about/page.tsx` when ready.
-3. **Highrise dedicated page** — `/projects/highrise`, once brand name is decided.
-4. **Connect custom GoDaddy domain** — site is live on Vercel default domain; point the purchased GoDaddy domain at it.
+1. **Google Form URLs** — `lib/leadConfig.ts` still has placeholder URLs (`PASTE_ENQUIRY_FORM_RESPONSE_URL` etc.). Create 3 Google Forms (Enquiry, Site Visit, Brochure) and paste their `/formResponse` URLs + `entry.XXXXX` field IDs into `leadConfig.ts`.
+2. **MSG91 Vercel env vars** — Add `MSG91_AUTH_KEY` and `MSG91_TEMPLATE_ID` in Vercel → Project → Settings → Environment Variables, then trigger a redeploy.
+3. **Site visit email notification** — In the Site Visit Google Form, go to Responses → ⋮ → "Get email notifications for new responses" to receive instant alerts.
+4. **Completed project photos** — Add `image: '/images/completed/filename.jpg'` per project in `lib/projects.ts`; drop files in `public/images/completed/`.
+5. **Leadership photos** — Placeholder initials circles; upload real photos + update `app/about/page.tsx` when ready (expected in ~1 week).
+6. **Highrise Apartments — final name** — `lib/projects.ts`; "Name TBD" badge shows until updated (expected in ~2 weeks).
+7. **Highrise dedicated page** — `/projects/highrise`, once brand name is decided.
+8. **Connect custom GoDaddy domain** — Add domain in Vercel dashboard, then add A record `76.76.21.21` and CNAME `cname.vercel-dns.com` in GoDaddy DNS.
 
 ---
 
@@ -151,7 +172,16 @@ construction-site/
 - **URL:** `https://oobbgnvmapsanaqbpzvi.supabase.co`
 - **Anon key:** in `.env.local` (gitignored + set in Vercel env vars — never committed)
 - **Tables live:** `enquiries`, `media_items`
-- **Storage:** `media` bucket is created and public (for team photos + future media)
+- **Storage:** `media` bucket is created and public (for team photos + completed project images)
+
+---
+
+## MSG91
+
+- **Auth Key:** in `.env.local` as `MSG91_AUTH_KEY` (also set this in Vercel env vars)
+- **Template ID:** in `.env.local` as `MSG91_TEMPLATE_ID`
+- **Template message:** `Your OTP for SR Builders and Developers is ##OTP##. Please do not share this with anyone.`
+- **Used in:** `BrochureButton.tsx` only — Enquiry and Site Visit forms do NOT require OTP.
 
 ---
 
