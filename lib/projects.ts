@@ -10,6 +10,7 @@ export interface Project {
   description?: string
   targetCompletion?: string
   brochureUrl?: string
+  image?: string
 }
 
 export const currentProjects: Project[] = [

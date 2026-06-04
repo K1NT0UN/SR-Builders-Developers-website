@@ -220,18 +220,31 @@ export default function ProjectsTabs({ current, pipeline, completed }: Props) {
                   key={i}
                   whileHover={{ y: -4, backgroundColor: 'rgb(26 51 32 / 0.04)', boxShadow: '0 8px 24px rgba(26,51,32,0.1)' }}
                   transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                  className="bg-parchment border border-charcoal/10 p-5 group cursor-default hover:border-gold/40 transition-colors duration-200"
+                  className="bg-parchment border border-charcoal/10 p-5 group cursor-default hover:border-gold/40 transition-colors duration-200 flex flex-col h-full"
                 >
-                  <p className="text-[10px] tracking-widest uppercase text-charcoal-light/40 mb-3 group-hover:text-charcoal-light/60 transition-colors">
-                    {p.company}
-                  </p>
-                  <h4 className="font-serif text-lg text-forest group-hover:text-gold transition-colors duration-200 leading-snug mb-1">
-                    {p.name}
-                  </h4>
-                  <p className="text-xs text-charcoal-light/60 mb-3">{p.location}</p>
-                  <span className={`text-[10px] tracking-widest uppercase ${typeColors[p.type] ?? 'text-charcoal-light'}`}>
-                    {p.type}
-                  </span>
+                  {p.image ? (
+                    <div className="w-full h-40 mb-5 relative overflow-hidden bg-charcoal/5">
+                      <img src={p.image} alt={p.name} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+                  ) : (
+                    <div className="w-full h-40 mb-5 relative overflow-hidden bg-forest/5 flex items-center justify-center border border-charcoal/5">
+                      <span className="text-[9px] tracking-[0.2em] uppercase text-charcoal-light/40">Image Coming Soon</span>
+                    </div>
+                  )}
+                  <div className="flex flex-col flex-1">
+                    <p className="text-[10px] tracking-widest uppercase text-charcoal-light/40 mb-3 group-hover:text-charcoal-light/60 transition-colors">
+                      {p.company}
+                    </p>
+                    <h4 className="font-serif text-lg text-forest group-hover:text-gold transition-colors duration-200 leading-snug mb-1">
+                      {p.name}
+                    </h4>
+                    <p className="text-xs text-charcoal-light/60 mb-3">{p.location}</p>
+                    <div className="mt-auto pt-2">
+                      <span className={`text-[10px] tracking-widest uppercase ${typeColors[p.type] ?? 'text-charcoal-light'}`}>
+                        {p.type}
+                      </span>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
