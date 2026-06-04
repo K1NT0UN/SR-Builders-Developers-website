@@ -2,13 +2,10 @@
 
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { COUNTRY_CODE, otpEnabled, brochureForm } from '@/lib/leadConfig'
+import { COUNTRY_CODE } from '@/lib/leadConfig'
 import { sendOtp, verifyOtp, resetOtp } from '@/lib/otp'
-import { submitToGoogleForm } from '@/lib/submitForm'
+import { submitBrochure } from '@/lib/submitForm'
 
-const RECAPTCHA_ID = 'recaptcha-brochure'
-
-// Gated brochure download: name + mobile + OTP, then auto-download.
 export default function BrochureButton({
   brochureUrl,
   projectName,
@@ -21,6 +18,7 @@ export default function BrochureButton({
   const [open, setOpen] = useState(false)
   const [name, setName] = useState('')
   const [mobile, setMobile] = useState('')
+  const [email, setEmail] = useState('')
   const [otpSent, setOtpSent] = useState(false)
   const [otpCode, setOtpCode] = useState('')
   const [busy, setBusy] = useState(false)
@@ -33,29 +31,27 @@ export default function BrochureButton({
   function triggerDownload() {
     const a = document.createElement('a')
     a.href = brochureUrl
-    a.download = ''
+    a.download = `${projectName}-Brochure.pdf`
     document.body.appendChild(a)
     a.click()
     a.remove()
   }
 
   async function finish() {
-    await submitToGoogleForm(brochureForm.actionUrl, brochureForm.fields, { name: name.trim(), mobile: e164 })
+    await submitBrochure({ name: name.trim(), mobile: e164, email: email.trim() || undefined })
     triggerDownload()
     resetOtp()
     setOpen(false)
-    // reset local state for next time
-    setName(''); setMobile(''); setOtpSent(false); setOtpCode(''); setError('')
+    setName(''); setMobile(''); setEmail(''); setOtpSent(false); setOtpCode(''); setError('')
   }
 
   async function handleSend() {
     setError('')
     if (!name.trim()) return setError('Please enter your name.')
     if (!mobileValid) return setError('Enter a valid 10-digit mobile number.')
-    if (!otpEnabled) return finish() // OTP not configured yet → allow download after details
     setBusy(true)
     try {
-      await sendOtp(e164, RECAPTCHA_ID)
+      await sendOtp(e164)
       setOtpSent(true)
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Could not send OTP.')
@@ -117,30 +113,75 @@ export default function BrochureButton({
               <h3 className="font-serif text-2xl text-forest mb-5">Verify to download</h3>
 
               <div className="space-y-4">
-                <input className={inputCls} value={name} onChange={(e) => setName(e.target.value)} placeholder="Your full name" disabled={otpSent} />
+                <input
+                  className={inputCls}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your full name *"
+                  disabled={otpSent}
+                />
                 <div className="flex">
                   <span className="inline-flex items-center px-3 bg-forest/5 border border-r-0 border-gold/30 text-charcoal-light text-sm">{COUNTRY_CODE}</span>
-                  <input className={inputCls} value={mobile} onChange={(e) => setMobile(e.target.value)} inputMode="numeric" placeholder="10-digit mobile number" disabled={otpSent} />
+                  <input
+                    className={inputCls}
+                    value={mobile}
+                    onChange={(e) => setMobile(e.target.value)}
+                    inputMode="numeric"
+                    placeholder="10-digit mobile number *"
+                    disabled={otpSent}
+                  />
                 </div>
+                <input
+                  className={inputCls}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  placeholder="Email address (optional)"
+                  disabled={otpSent}
+                />
 
                 {otpSent && (
-                  <input className={inputCls} value={otpCode} onChange={(e) => setOtpCode(e.target.value)} inputMode="numeric" placeholder="Enter 6-digit OTP" />
+                  <input
+                    className={inputCls}
+                    value={otpCode}
+                    onChange={(e) => setOtpCode(e.target.value)}
+                    inputMode="numeric"
+                    placeholder="Enter 6-digit OTP"
+                    autoFocus
+                  />
                 )}
 
                 {error && <p className="text-xs text-red-600">{error}</p>}
 
                 {!otpSent ? (
-                  <button type="button" onClick={handleSend} disabled={busy} className="w-full px-8 py-4 bg-forest text-parchment text-sm tracking-widest uppercase font-semibold hover:bg-forest-dark disabled:opacity-40 transition-colors">
-                    {busy ? 'Please wait…' : otpEnabled ? 'Send OTP' : 'Download'}
+                  <button
+                    type="button"
+                    onClick={handleSend}
+                    disabled={busy}
+                    className="w-full px-8 py-4 bg-forest text-parchment text-sm tracking-widest uppercase font-semibold hover:bg-forest-dark disabled:opacity-40 transition-colors"
+                  >
+                    {busy ? 'Please wait…' : 'Send OTP'}
                   </button>
                 ) : (
-                  <button type="button" onClick={handleVerify} disabled={busy || otpCode.length < 6} className="w-full px-8 py-4 bg-gold text-forest text-sm tracking-widest uppercase font-semibold hover:bg-gold-dark disabled:opacity-40 transition-colors">
-                    {busy ? 'Verifying…' : 'Verify & Download'}
-                  </button>
+                  <div className="space-y-3">
+                    <button
+                      type="button"
+                      onClick={handleVerify}
+                      disabled={busy || otpCode.length < 6}
+                      className="w-full px-8 py-4 bg-gold text-forest text-sm tracking-widest uppercase font-semibold hover:bg-gold-dark disabled:opacity-40 transition-colors"
+                    >
+                      {busy ? 'Verifying…' : 'Verify & Download'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => { setOtpSent(false); setOtpCode(''); setError(''); resetOtp() }}
+                      className="w-full text-xs text-charcoal-light/60 hover:text-forest underline transition-colors"
+                    >
+                      Change number
+                    </button>
+                  </div>
                 )}
               </div>
-
-              <div id={RECAPTCHA_ID} />
             </motion.div>
           </motion.div>
         )}

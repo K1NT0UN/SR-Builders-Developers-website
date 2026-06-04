@@ -4,6 +4,7 @@ import FadeInView from '@/components/FadeInView'
 import NisargaHeroCarousel from '@/components/NisargaHeroCarousel'
 import NisargaOverviewLightbox from '@/components/NisargaOverviewLightbox'
 import NisargaLandscapeGallery from '@/components/NisargaLandscapeGallery'
+import BrochureButton from '@/components/BrochureButton'
 
 const stats = [
   { value: '17+', label: 'Acres' },
@@ -368,6 +369,11 @@ export default function NisargaPageContent() {
             >
               Send Enquiry
             </Link>
+            <BrochureButton
+              brochureUrl="/nisarga-brochure.pdf"
+              projectName="Nisarga"
+              className="px-10 py-4 bg-forest/10 border-2 border-forest text-forest text-sm tracking-widest uppercase font-semibold hover:bg-forest/20 transition-colors duration-200"
+            />
           </div>
         </FadeInView>
       </section>

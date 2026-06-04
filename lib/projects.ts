@@ -23,6 +23,7 @@ export const currentProjects: Project[] = [
     description:
       'A landmark gated township offering premium 4 & 5 BHK forestscape villas on 17+ acres in Kollur, one of Hyderabad\'s fastest-growing corridors. 50+ amenities, 2 clubhouses. RERA: PO22000007723.',
     targetCompletion: 'Villas: End of 2028',
+    brochureUrl: '/nisarga-brochure.pdf',
   },
 ]
 
