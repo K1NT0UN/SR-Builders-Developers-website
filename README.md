@@ -30,7 +30,8 @@ The parent group site lives separately at `~/Desktop/AntiGravity/srsm-group-webs
 - **Tailwind CSS v4** — CSS-based config in `app/globals.css` (no `tailwind.config.ts`)
 - **Framer Motion** — scroll reveals, tab transitions, hover lift, Ken Burns hero, WhatsApp button
 - **GSAP + ScrollTrigger** — stat counters (`StatsSection`)
-- **Supabase** — enquiry form submissions (`@supabase/ssr`)
+- **Supabase** — enquiry form submissions and CMS media (`@supabase/ssr`)
+- **MSG91** — server-side OTP SMS verification for lead forms
 
 Read `CLAUDE.md` at workspace root and `AGENTS.md` before editing.
 
@@ -120,8 +121,8 @@ construction-site/
 - ✅ **Homepage (`/`)** — Nisarga content + inline contact strip. Navbar/footer present.
 - ✅ **`/projects/nisarga`** — Same Nisarga content via shared `NisargaPageContent`
 - ✅ **About** — Mission, history, core strengths, entities, Leadership (fresh copy, distinct voice from SRSM site)
-- ✅ **Projects** — Tabs: Current (Nisarga) + Pipeline + Completed (24). Hover animations, brochure buttons.
-- ✅ **Enquire** — Quick enquiry + site visit forms → Supabase `enquiries` table
+- ✅ **Projects** — Tabs: Current (Nisarga) + Pipeline + Completed (24). Hover animations, brochure buttons, and photo placeholders on completed tiles.
+- ✅ **Enquire** — Quick enquiry + site visit forms → Supabase `enquiries` table + MSG91 OTP verification
 - ✅ **WhatsApp** — Floating button + inline contact strip, shipped (commit 586fdef)
 
 ### Group Entities (3 active)
@@ -131,19 +132,17 @@ construction-site/
 
 ### Projects Data (`lib/projects.ts`)
 **Current:** Nisarga Villas (integrated township, ongoing, 2028)
-**Pipeline:** Highrise Apartments (Kollur, **name TBD**, 2030) · Borampet Villas · Nagole Villas · Medchal Commercial · Bashirbag Commercial · Chandanagar Commercial · Lingampally Residences
-**Completed:** 24 projects across SR Builders, SM Builders, SM Builders & Developers, SM Projects, SM Constructions, SM Infra Developers
+**Pipeline:** Highrise Apartments (Kollur, **name TBD**, 2030) · Borampet Villas · Bashirbag Commercial · Chandanagar Commercial · Lingampally Residences
+**Completed:** 24 projects across SR Builders, SM Builders, SM Builders & Developers, SM Projects, SM Constructions, SM Infra Developers (photo placeholders added)
 
 ---
 
 ## What Still Needs To Be Done
 
 1. **Highrise Apartments — final name** — `lib/projects.ts`; "Name TBD" badge shows until updated.
-2. **Leadership photos** — placeholder initials circles; upload real photos + update `app/about/page.tsx`.
-3. **Qualifications + bios** — several leadership members have `'[Qualifications to be added]'` and empty bios.
-4. **Supabase `media_items` table** — schema in workspace `CLAUDE.md`; not yet created (for CMS-based media).
-5. **Highrise dedicated page** — `/projects/highrise`, once brand name is decided.
-6. **Connect custom GoDaddy domain** — site is live on the Vercel default domain; point the purchased GoDaddy domain at it (add domain in Vercel dashboard, then A record + CNAME in GoDaddy DNS).
+2. **Leadership photos** — placeholder initials circles; upload real photos + update `app/about/page.tsx` when ready.
+3. **Highrise dedicated page** — `/projects/highrise`, once brand name is decided.
+4. **Connect custom GoDaddy domain** — site is live on Vercel default domain; point the purchased GoDaddy domain at it.
 
 ---
 
@@ -151,8 +150,8 @@ construction-site/
 
 - **URL:** `https://oobbgnvmapsanaqbpzvi.supabase.co`
 - **Anon key:** in `.env.local` (gitignored + set in Vercel env vars — never committed)
-- **Tables live:** `enquiries`
-- **Storage:** create bucket `media` (public) for team photos + future media
+- **Tables live:** `enquiries`, `media_items`
+- **Storage:** `media` bucket is created and public (for team photos + future media)
 
 ---
 
