@@ -1,28 +1,17 @@
 'use client'
 
 import { useState } from 'react'
-import {
-  COUNTRY_CODE,
-  otpEnabled,
-  enquiryForm,
-  siteVisitForm,
-  formConfigured,
-} from '@/lib/leadConfig'
-import { sendOtp, verifyOtp, resetOtp } from '@/lib/otp'
-import { submitToGoogleForm } from '@/lib/submitForm'
+import { COUNTRY_CODE } from '@/lib/leadConfig'
+import { submitEnquiry, submitSiteVisit } from '@/lib/submitForm'
 
 type Variant = 'enquiry' | 'siteVisit'
 
 export default function LeadForm({ variant }: { variant: Variant }) {
-  const form = variant === 'siteVisit' ? siteVisitForm : enquiryForm
-
   const [name, setName] = useState('')
   const [mobile, setMobile] = useState('')
   const [email, setEmail] = useState('')
-
-  const [otpSent, setOtpSent] = useState(false)
-  const [otpCode, setOtpCode] = useState('')
-  const [verified, setVerified] = useState(false)
+  const [date1, setDate1] = useState('')
+  const [date2, setDate2] = useState('')
 
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
@@ -32,50 +21,21 @@ export default function LeadForm({ variant }: { variant: Variant }) {
   const mobileValid = tenDigits.length === 10
   const e164 = `${COUNTRY_CODE}${tenDigits}`
 
-  async function handleSendOtp() {
-    setError('')
-    if (!name.trim()) return setError('Please enter your name.')
-    if (!mobileValid) return setError('Enter a valid 10-digit mobile number.')
-    setBusy(true)
-    try {
-      await sendOtp(e164)
-      setOtpSent(true)
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Could not send OTP. Try again.')
-    } finally {
-      setBusy(false)
-    }
-  }
-
-  async function handleVerify() {
-    setError('')
-    setBusy(true)
-    try {
-      await verifyOtp(otpCode)
-      setVerified(true)
-    } catch {
-      setError('Incorrect or expired code. Please try again.')
-    } finally {
-      setBusy(false)
-    }
-  }
-
   async function handleSubmit() {
     setError('')
     if (!name.trim()) return setError('Please enter your name.')
     if (!mobileValid) return setError('Enter a valid 10-digit mobile number.')
-    if (otpEnabled && !verified) return setError('Please verify your mobile number first.')
+
     setBusy(true)
     try {
-      await submitToGoogleForm(form.actionUrl, form.fields, {
-        name: name.trim(),
-        mobile: e164,
-        email: email.trim() || undefined,
-      })
+      if (variant === 'siteVisit') {
+        await submitSiteVisit({ name: name.trim(), mobile: e164, date1, date2 })
+      } else {
+        await submitEnquiry({ name: name.trim(), mobile: e164, email: email.trim() || undefined })
+      }
       setDone(true)
-      resetOtp()
     } catch {
-      setError('Something went wrong submitting. Please call us instead.')
+      setError('Something went wrong. Please call us instead.')
     } finally {
       setBusy(false)
     }
@@ -84,11 +44,12 @@ export default function LeadForm({ variant }: { variant: Variant }) {
   if (done) {
     return (
       <div className="bg-linen border border-gold/30 p-8 text-center">
-        <p className="font-serif text-2xl text-forest mb-2">Thank you{name ? `, ${name.split(' ')[0]}` : ''}.</p>
+        <p className="font-serif text-2xl text-forest mb-2">Thank you{name ? `, ${name.split(' ')[0]}` : ''}.
+        </p>
         <p className="text-charcoal-light text-sm leading-relaxed">
           {variant === 'siteVisit'
             ? 'Your site-visit request has been received. Our team will call you shortly to confirm a time.'
-            : 'Your enquiry has been received. We’ll get back to you within 24 hours.'}
+            : 'Your enquiry has been received. We\'ll get back to you within 24 hours.'}
         </p>
       </div>
     )
@@ -104,11 +65,18 @@ export default function LeadForm({ variant }: { variant: Variant }) {
       </p>
 
       <div className="space-y-4">
+        {/* Name */}
         <div>
           <label className="block text-xs tracking-widest uppercase text-charcoal-light/60 mb-1">Name *</label>
-          <input className={inputCls} value={name} onChange={(e) => setName(e.target.value)} placeholder="Your full name" />
+          <input
+            className={inputCls}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Your full name"
+          />
         </div>
 
+        {/* Mobile */}
         <div>
           <label className="block text-xs tracking-widest uppercase text-charcoal-light/60 mb-1">Mobile *</label>
           <div className="flex">
@@ -121,75 +89,61 @@ export default function LeadForm({ variant }: { variant: Variant }) {
               onChange={(e) => setMobile(e.target.value)}
               inputMode="numeric"
               placeholder="10-digit mobile number"
-              disabled={verified}
             />
           </div>
         </div>
 
-        {/* OTP flow (only when Firebase is configured) */}
-        {otpEnabled && !verified && (
-          <div className="pt-1">
-            {!otpSent ? (
-              <button
-                type="button"
-                onClick={handleSendOtp}
-                disabled={busy || !mobileValid}
-                className="text-xs tracking-widest uppercase text-forest border-b border-gold pb-0.5 hover:text-gold disabled:opacity-40 transition-colors"
-              >
-                {busy ? 'Sending…' : 'Send OTP'}
-              </button>
-            ) : (
-              <div className="flex gap-2 items-end">
-                <div className="flex-1">
-                  <label className="block text-xs tracking-widest uppercase text-charcoal-light/60 mb-1">Enter OTP</label>
-                  <input
-                    className={inputCls}
-                    value={otpCode}
-                    onChange={(e) => setOtpCode(e.target.value)}
-                    inputMode="numeric"
-                    placeholder="6-digit code"
-                  />
-                </div>
-                <button
-                  type="button"
-                  onClick={handleVerify}
-                  disabled={busy || otpCode.length < 6}
-                  className="px-5 py-3 bg-forest text-parchment text-xs tracking-widest uppercase hover:bg-forest-dark disabled:opacity-40 transition-colors"
-                >
-                  Verify
-                </button>
-              </div>
-            )}
+        {/* Email — only for Enquiry */}
+        {variant === 'enquiry' && (
+          <div>
+            <label className="block text-xs tracking-widest uppercase text-charcoal-light/60 mb-1">Email (optional)</label>
+            <input
+              className={inputCls}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              placeholder="you@example.com"
+            />
           </div>
         )}
 
-        {verified && (
-          <p className="text-xs text-green-700 tracking-wide">✓ Mobile verified</p>
+        {/* Preferred Dates — only for Site Visit */}
+        {variant === 'siteVisit' && (
+          <>
+            <div>
+              <label className="block text-xs tracking-widest uppercase text-charcoal-light/60 mb-1">Preferred Date 1</label>
+              <input
+                className={inputCls}
+                type="date"
+                value={date1}
+                onChange={(e) => setDate1(e.target.value)}
+                min={new Date().toISOString().split('T')[0]}
+              />
+            </div>
+            <div>
+              <label className="block text-xs tracking-widest uppercase text-charcoal-light/60 mb-1">Preferred Date 2 (optional)</label>
+              <input
+                className={inputCls}
+                type="date"
+                value={date2}
+                onChange={(e) => setDate2(e.target.value)}
+                min={new Date().toISOString().split('T')[0]}
+              />
+            </div>
+          </>
         )}
-
-        <div>
-          <label className="block text-xs tracking-widest uppercase text-charcoal-light/60 mb-1">Email (optional)</label>
-          <input className={inputCls} value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="you@example.com" />
-        </div>
 
         {error && <p className="text-xs text-red-600">{error}</p>}
 
         <button
           type="button"
           onClick={handleSubmit}
-          disabled={busy || !formConfigured(form)}
+          disabled={busy}
           className="w-full px-8 py-4 bg-gold text-forest text-sm tracking-widest uppercase font-semibold hover:bg-gold-dark disabled:opacity-40 transition-colors duration-200"
         >
           {busy ? 'Please wait…' : variant === 'siteVisit' ? 'Request Site Visit' : 'Submit Enquiry'}
         </button>
-
-        {!formConfigured(form) && (
-          <p className="text-[11px] text-charcoal-light/50 text-center">
-            Form not yet connected — see SETUP_LEADS_OTP.md.
-          </p>
-        )}
       </div>
-
     </div>
   )
 }

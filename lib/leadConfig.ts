@@ -1,63 +1,50 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Lead-capture configuration: Firebase Phone OTP + Google Forms.
+// Lead-capture configuration: MSG91 OTP + Google Forms.
 //
-// 1. Firebase keys come from environment variables (set in .env.local locally and
-//    in Vercel → Project → Settings → Environment Variables). See .env.local.example.
-// 2. Google Form action URLs + field entry IDs are filled in below AFTER you create
-//    the forms (these are NOT secret — they live in the page source either way).
-//    Setup steps: see SETUP_LEADS_OTP.md.
+// Google Form action URLs + field entry IDs are wired below.
+// These are NOT secret — they live in the page source either way.
 // ─────────────────────────────────────────────────────────────────────────────
-
-export const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY ?? '',
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN ?? '',
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ?? '',
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID ?? '',
-}
-
-// OTP is active only once a Firebase API key is present.
-export const otpEnabled = firebaseConfig.apiKey.length > 0
 
 // Default country code for the mobile field.
 export const COUNTRY_CODE = '+91'
 
-// ── Google Forms ─────────────────────────────────────────────────────────────
-// After creating each form: open it → ⋮ → "Get pre-filled link", fill dummy
-// values, copy the link, and read the entry.XXXXX IDs from the URL. Paste them
-// below. The action URL is the form's /viewform link with /viewform → /formResponse.
-type FormConfig = {
-  actionUrl: string
-  fields: { name: string; mobile: string; email: string }
-}
-
-export const enquiryForm: FormConfig = {
-  actionUrl: 'PASTE_ENQUIRY_FORM_RESPONSE_URL', // .../d/e/XXX/formResponse
+// ── Enquiry Form ──────────────────────────────────────────────────────────────
+// Fields: Name, Mobile, Email
+export const enquiryForm = {
+  actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdpMFwF3FozoJTsYJhhiD5rYM0c1HCWsdEY_pi-3hs80V9APQ/formResponse',
   fields: {
-    name: 'entry.PASTE_NAME_ID',
-    mobile: 'entry.PASTE_MOBILE_ID',
-    email: 'entry.PASTE_EMAIL_ID',
+    name: 'entry.1069233328',
+    mobile: 'entry.1820064998',
+    email: 'entry.763039135',
   },
 }
 
-export const siteVisitForm: FormConfig = {
-  actionUrl: 'PASTE_SITEVISIT_FORM_RESPONSE_URL',
+// ── Site Visit Form ───────────────────────────────────────────────────────────
+// Fields: Name, Mobile, Preferred Date 1, Preferred Date 2
+export const siteVisitForm = {
+  actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeQZUxCFG0mYDVvTRXXWbVwOgPBQeP9Ft7zC8lU7XXh3DRJuw/formResponse',
   fields: {
-    name: 'entry.PASTE_NAME_ID',
-    mobile: 'entry.PASTE_MOBILE_ID',
-    email: 'entry.PASTE_EMAIL_ID',
+    name: 'entry.353672268',
+    mobile: 'entry.278393666',
+    date1: 'entry.1651901983',
+    date2: 'entry.697188075',
   },
 }
 
-// Optional: log brochure downloads to a form too (leave actionUrl empty to skip).
-export const brochureForm: FormConfig = {
-  actionUrl: '',
+// ── Brochure Download Form ────────────────────────────────────────────────────
+// Fields: Name, Mobile, Email (OTP required before download)
+export const brochureForm = {
+  actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeyZKT_HuN-nWhPimdtMREroQ54FwOqQzzJhyBghXT0y22Xbw/formResponse',
   fields: {
-    name: 'entry.PASTE_NAME_ID',
-    mobile: 'entry.PASTE_MOBILE_ID',
-    email: 'entry.PASTE_EMAIL_ID',
+    name: 'entry.662210046',
+    mobile: 'entry.1767171215',
+    email: 'entry.1019572093',
   },
 }
 
-export function formConfigured(f: FormConfig) {
-  return f.actionUrl.startsWith('http')
+export function formConfigured(form: { actionUrl: string }) {
+  return form.actionUrl.startsWith('http')
 }
+
+// OTP is enabled — MSG91 keys are configured in .env.local and Vercel env vars.
+export const otpEnabled = true
