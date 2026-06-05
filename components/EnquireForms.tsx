@@ -1,10 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import LeadForm from '@/components/LeadForm'
 
 export default function EnquireForms() {
   const [tab, setTab] = useState<'enquiry' | 'siteVisit'>('enquiry')
+
+  useEffect(() => {
+    if (window.location.hash === '#site-visit') setTab('siteVisit')
+  }, [])
 
   return (
     <div>

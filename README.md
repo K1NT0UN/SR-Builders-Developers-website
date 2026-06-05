@@ -1,6 +1,6 @@
 # SR Builders & Developers — Agent Handoff README
 
-*Last updated: 2026-06-05*
+*Last updated: 2026-06-06*
 
 ---
 
@@ -19,8 +19,8 @@ Group site (separate repo): `~/Desktop/AntiGravity/srsm-group-website/`
 | GitHub | github.com/K1NT0UN/SR-Builders-Developers-website |
 | Vercel | Live, auto-deploys on push to `main`. Custom domain not yet connected. |
 | Supabase | oobbgnvmapsanaqbpzvi.supabase.co — `enquiries` + `media_items` tables live, `media` bucket public |
-| Google Forms | ✅ All 3 wired (Enquiry, Site Visit, Brochure) — leads land in Google Sheets |
-| MSG91 OTP | ⚠️ KYC done, env vars set in Vercel — but DLT registration still needed. SMS blocked at carrier level. User exploring alternatives (Firebase / other provider). |
+| Google Forms | ✅ All 3 recording — Enquiry, Site Visit, Brochure |
+| OTP | ✅ Firebase Phone Auth — fully working. Test: phone `9999999999`, OTP `123456` |
 | Brochure PDF | ✅ `/public/nisarga-brochure.pdf` — served as static asset |
 | Working tree | Clean, synced to `origin/main` |
 
@@ -33,8 +33,8 @@ Group site (separate repo): `~/Desktop/AntiGravity/srsm-group-website/`
 - **Framer Motion** — scroll reveals, modals, hover, Ken Burns hero
 - **GSAP + ScrollTrigger** — stat counters (`StatsSection`)
 - **Supabase** — lead storage + media (`@supabase/ssr`)
-- **MSG91** — server-side OTP for brochure download (⚠️ pending DLT — see OTP section)
-- **Google Forms** — lead capture for enquiry, site visit, brochure (no-cors POST)
+- **Firebase Phone Auth** — OTP for brochure download (invisible reCAPTCHA, `signInWithPhoneNumber`)
+- **Google Forms** — lead capture (server-side proxy via `/api/lead`); session fields (`fbzx`, `fvv`, etc.) required for responses to record
 
 ---
 
@@ -81,9 +81,7 @@ construction-site/
 │   │   ├── page.tsx             ← Tabs: Current / Pipeline / Completed
 │   │   └── nisarga/page.tsx     ← Renders NisargaPageContent
 │   ├── enquire/page.tsx         ← Enquiry + Site Visit forms, 4-col contact strip
-│   └── api/otp/
-│       ├── send/route.ts        ← POST to MSG91 /api/v5/otp (body: template_id, mobile)
-│       └── verify/route.ts      ← GET MSG91 /api/v5/otp/verify?otp=&mobile=
+│   └── api/lead/route.ts        ← Server-side proxy for all 3 Google Forms (fetches fbzx, appends session fields)
 ├── components/
 │   ├── Navbar.tsx / Footer.tsx / FloatingWhatsApp.tsx
 │   ├── StatsSection.tsx         ← GSAP counters
@@ -94,14 +92,14 @@ construction-site/
 │   ├── ProjectsTabs.tsx         ← Current/Pipeline/Completed tabs + BrochureButton
 │   ├── EnquireForms.tsx         ← Tab switcher: Enquiry / Site Visit
 │   ├── LeadForm.tsx             ← Name + Mobile + Email (+ date fields for site visit). No OTP.
-│   ├── BrochureButton.tsx       ← Gold modal: Name + Mobile + Email → MSG91 OTP → download + Google Form log
+│   ├── BrochureButton.tsx       ← Gold modal: Name + Mobile + Email → Firebase OTP → download + Google Form log
 │   └── EnquireClient.tsx        ← Legacy (kept for reference)
 ├── lib/
 │   ├── projects.ts              ← All project data. Nisarga has brochureUrl set.
 │   ├── leadConfig.ts            ← Google Form URLs + entry IDs (all 3 wired). otpEnabled = true.
-│   ├── otp.ts                   ← sendOtp / verifyOtp — calls /api/otp/* routes
-│   ├── submitForm.ts            ← submitEnquiry / submitSiteVisit / submitBrochure helpers
-│   ├── firebase.ts              ← Firebase init (gracefully disabled — kept for potential OTP fallback)
+│   ├── otp.ts                   ← sendOtp / verifyOtp — Firebase Phone Auth (RecaptchaVerifier + signInWithPhoneNumber)
+│   ├── submitForm.ts            ← submitEnquiry / submitSiteVisit / submitBrochure helpers (all POST to /api/lead)
+│   ├── firebase.ts              ← Firebase init (auth instance used by otp.ts)
 │   └── supabase/client.ts + server.ts
 ├── public/
 │   ├── nisarga-brochure.pdf     ← 16MB — gated behind OTP modal
@@ -127,28 +125,30 @@ construction-site/
 
 ## Lead Capture Flow
 
-| Form | OTP? | Destination |
-|---|---|---|
-| Enquiry | ❌ | Google Sheet via `submitEnquiry` |
-| Site Visit | ❌ | Google Sheet via `submitSiteVisit` (includes date1, date2) |
-| Brochure Download | ✅ MSG91 | Google Sheet via `submitBrochure` + PDF auto-downloads |
+| Form | OTP? | Destination | Status |
+|---|---|---|---|
+| Enquiry | ❌ | Google Sheet via `submitEnquiry` | ✅ Recording |
+| Site Visit | ❌ | Google Sheet via `submitSiteVisit` (name, mobile, email) | ✅ Recording |
+| Brochure Download | ✅ Firebase | Google Sheet via `submitBrochure` + PDF auto-downloads | ✅ Recording |
 
 ---
 
-## OTP — Current Blocker
+## OTP — Firebase Phone Auth ✅
 
-MSG91 API calls succeed (200), but SMS is silently blocked by telecom carriers.
-**Root cause:** DLT (TRAI Distributed Ledger) registration is required — a separate process from KYC.
-- KYC: ✅ done
-- DLT entity + header + template registration: ❌ not yet done (~₹5,000 one-time, 2–5 days)
-- **User exploring alternatives** — Firebase Phone Auth is the fastest fallback (Google handles DLT, ~15 min to wire up, code already exists in `lib/firebase.ts`)
+Switched from MSG91 to Firebase Phone Auth. MSG91 was blocked at carrier level (DLT not registered).
+
+- `lib/otp.ts` — `sendOtp(e164Phone)` / `verifyOtp(code)` / `resetOtp()`
+- Uses `RecaptchaVerifier` (invisible) + `signInWithPhoneNumber`
+- reCAPTCHA container: `<div id="recaptcha-container" />` in `BrochureButton.tsx`
+- **Test credentials:** phone `+919999999999` · OTP `123456`
+- Firebase project env vars: `NEXT_PUBLIC_FIREBASE_*` in `.env.local` + Vercel
+
 
 ---
 
 ## What Still Needs To Be Done
 
-1. **OTP provider** — Decide: finish MSG91 DLT registration, or switch to Firebase Phone Auth temporarily
-2. **Completed project photos** — Add `image` field per project in `lib/projects.ts`; drop files in `public/images/completed/`
+1. **Completed project photos** — Add `image` field per project in `lib/projects.ts`; drop files in `public/images/completed/`
 3. **Leadership photos** — ~1 week. Update `app/about/page.tsx` when ready
 4. **Highrise Apartments final name** — ~2 weeks. Update `lib/projects.ts`; add `/projects/highrise` page
 5. **Connect GoDaddy domain** — Add domain in Vercel dashboard → A record `76.76.21.21` + CNAME `cname.vercel-dns.com` in GoDaddy DNS
@@ -161,7 +161,7 @@ MSG91 API calls succeed (200), but SMS is silently blocked by telecom carriers.
 |---|---|
 | Vercel Pro | $20/month (required for commercial use) |
 | Supabase | Free |
-| MSG91 | ~₹100/month after DLT |
+| Firebase Auth | Free (Spark plan, well within limits) |
 | GoDaddy domain protection | ₹150/month |
 | Domain renewal (from June 2029) | ₹5,500/year |
 | **Total** | **~$22/month + ₹250** |

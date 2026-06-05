@@ -10,8 +10,8 @@ const FORMS = {
     fields: { name: 'entry.1069233328', mobile: 'entry.1820064998', email: 'entry.763039135' },
   },
   siteVisit: {
-    actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeQZUxCFG0mYDVvTRXXWbVwOgPBQeP9Ft7zC8lU7XXh3DRJuw/formResponse',
-    fields: { name: 'entry.353672268', mobile: 'entry.278393666', date1: 'entry.1651901983', date2: 'entry.697188075' },
+    actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScJ74LMqHlUJiTRVEpk-W24esO9Ssa3HnDBWxZbUOuJxp3gPQ/formResponse',
+    fields: { name: 'entry.1790036588', mobile: 'entry.1567757704', email: 'entry.1683077939', date1: 'entry.389006286', date2: 'entry.1376214177' },
   },
 }
 

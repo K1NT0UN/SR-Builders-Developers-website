@@ -10,7 +10,7 @@ export async function submitEnquiry(data: { name: string; mobile: string; email?
   await submitLead('enquiry', data)
 }
 
-export async function submitSiteVisit(data: { name: string; mobile: string; date1?: string; date2?: string }): Promise<void> {
+export async function submitSiteVisit(data: { name: string; mobile: string; email?: string; date1?: string; date2?: string }): Promise<void> {
   await submitLead('siteVisit', data)
 }
 

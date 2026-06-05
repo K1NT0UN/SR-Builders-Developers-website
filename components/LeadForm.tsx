@@ -29,7 +29,7 @@ export default function LeadForm({ variant }: { variant: Variant }) {
     setBusy(true)
     try {
       if (variant === 'siteVisit') {
-        await submitSiteVisit({ name: name.trim(), mobile: e164, date1, date2 })
+        await submitSiteVisit({ name: name.trim(), mobile: e164, email: email.trim() || undefined, date1: date1 || undefined, date2: date2 || undefined })
       } else {
         await submitEnquiry({ name: name.trim(), mobile: e164, email: email.trim() || undefined })
       }
@@ -93,19 +93,17 @@ export default function LeadForm({ variant }: { variant: Variant }) {
           </div>
         </div>
 
-        {/* Email — only for Enquiry */}
-        {variant === 'enquiry' && (
-          <div>
-            <label className="block text-xs tracking-widest uppercase text-charcoal-light/60 mb-1">Email (optional)</label>
-            <input
-              className={inputCls}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              placeholder="you@example.com"
-            />
-          </div>
-        )}
+        {/* Email — optional for both forms */}
+        <div>
+          <label className="block text-xs tracking-widest uppercase text-charcoal-light/60 mb-1">Email (optional)</label>
+          <input
+            className={inputCls}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            placeholder="you@example.com"
+          />
+        </div>
 
         {/* Preferred Dates — only for Site Visit */}
         {variant === 'siteVisit' && (
