@@ -22,7 +22,7 @@ const barlow = Barlow({
 export const metadata: Metadata = {
   title: 'SR Builders and Developers | Premium Homes in Hyderabad',
   description:
-    'SR Builders and Developers — 25+ years of building quality homes in Hyderabad. Explore Nisarga Villas, our flagship 4 & 5 BHK gated township in Kollur.',
+    'SR Builders and Developers — 25+ years of building quality homes in Hyderabad. Explore Nisarga Villas, our flagship 4 BHK gated township in Kollur.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

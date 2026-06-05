@@ -90,7 +90,7 @@ export default function NisargaHeroCarousel() {
           Where Green Meets Grandeur
         </p>
         <p className="text-parchment/60 mt-2 text-sm tracking-wide">
-          4 &amp; 5 BHK Forestscape Villas · Patighanpur, Kollur, Hyderabad
+          4 BHK Forestscape Villas · Patighanpur, Kollur, Hyderabad
         </p>
         <a
           href="https://maps.app.goo.gl/n3kFgFqyRdASwSuc6"
