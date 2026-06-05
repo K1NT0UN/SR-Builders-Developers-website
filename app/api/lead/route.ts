@@ -26,11 +26,13 @@ export async function POST(req: NextRequest) {
     if (value) body.append(entryId, value)
   }
 
+  console.log(`[lead] form=${form} body=${body.toString()}`)
   const res = await fetch(config.actionUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: body.toString(),
   })
+  console.log(`[lead] google response status=${res.status}`)
 
   return NextResponse.json({ ok: res.ok, status: res.status })
 }
