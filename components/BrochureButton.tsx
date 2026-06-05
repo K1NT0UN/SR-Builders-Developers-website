@@ -74,7 +74,7 @@ export default function BrochureButton({
   }
 
   const inputCls =
-    'w-full bg-parchment border border-gold/30 px-4 py-3 text-charcoal focus:outline-none focus:border-gold transition-colors'
+    'w-full bg-parchment/80 border border-gold/50 px-4 py-3 text-forest placeholder:text-forest/40 focus:outline-none focus:border-gold focus:bg-parchment transition-colors'
 
   return (
     <>
@@ -95,24 +95,30 @@ export default function BrochureButton({
             onClick={() => setOpen(false)}
           >
             <motion.div
-              className="bg-parchment w-full max-w-md p-8 relative"
+              className="bg-gold/10 border border-gold w-full max-w-md relative overflow-hidden"
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ type: 'spring', stiffness: 300, damping: 28 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => setOpen(false)}
-                className="absolute top-4 right-4 text-charcoal-light/50 hover:text-forest text-xl leading-none"
-                aria-label="Close"
-              >
-                ×
-              </button>
-              <p className="text-xs tracking-[0.4em] uppercase text-gold mb-2">{projectName} Brochure</p>
-              <h3 className="font-serif text-2xl text-forest mb-5">Verify to download</h3>
+              {/* Gold header band */}
+              <div className="bg-gold px-8 py-5 flex items-center justify-between">
+                <div>
+                  <p className="text-[10px] tracking-[0.4em] uppercase text-forest/60 mb-0.5">{projectName}</p>
+                  <h3 className="font-serif text-xl text-forest font-bold leading-tight">Download Brochure</h3>
+                </div>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="text-forest/50 hover:text-forest text-2xl leading-none transition-colors"
+                  aria-label="Close"
+                >
+                  ×
+                </button>
+              </div>
 
-              <div className="space-y-4">
+              {/* Form body */}
+              <div className="px-8 py-6 space-y-4">
                 <input
                   className={inputCls}
                   value={name}
@@ -121,7 +127,7 @@ export default function BrochureButton({
                   disabled={otpSent}
                 />
                 <div className="flex">
-                  <span className="inline-flex items-center px-3 bg-forest/5 border border-r-0 border-gold/30 text-charcoal-light text-sm">{COUNTRY_CODE}</span>
+                  <span className="inline-flex items-center px-3 bg-gold/20 border border-r-0 border-gold/50 text-forest text-sm font-semibold">{COUNTRY_CODE}</span>
                   <input
                     className={inputCls}
                     value={mobile}
@@ -179,7 +185,7 @@ export default function BrochureButton({
                     <button
                       type="button"
                       onClick={() => { setOtpSent(false); setOtpCode(''); setError(''); resetOtp() }}
-                      className="w-full text-xs text-charcoal-light/60 hover:text-forest underline transition-colors"
+                      className="w-full text-xs text-forest/50 hover:text-forest underline transition-colors"
                     >
                       Change number
                     </button>

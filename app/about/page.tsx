@@ -8,7 +8,7 @@ const coreStrengths = [
   'Zero debt — every project funded entirely without loans or credit facilities',
   'In-house civil engineering from foundation to handover, no outsourced oversight',
   'Vaastu-compliant design across all residential projects',
-  'RERA-registered flagship township at Kollur — PO22000007723',
+  'RERA-registered flagship township at Kollur — P01100010902',
   'Two decades of trusted relationships with Hyderabad\'s leading architects and contractors',
 ]
 

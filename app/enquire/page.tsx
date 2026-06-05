@@ -29,17 +29,41 @@ export default function EnquirePage() {
       {/* Contact Info */}
       <section className="bg-linen py-16 px-6">
         <FadeInView>
-          <div className="max-w-3xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
-            {[
-              { label: 'Headquarters', value: 'Flat No. 109, First Floor, Aparna Green Homes Apt, Nanakramguda Rd, Financial District, Hyderabad – 500032' },
-              { label: 'Phone', value: '+91 94922 39339' },
-              { label: 'Email', value: 'srbuildersnisarga@gmail.com' },
-            ].map(({ label, value }) => (
-              <div key={label}>
-                <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-2">{label}</p>
-                <p className="font-serif text-lg text-forest">{value}</p>
-              </div>
-            ))}
+          <div className="max-w-4xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div>
+              <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-2">Corporate Office</p>
+              <a
+                href="https://maps.app.goo.gl/4gPbrXw7e8HQVVpS8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-serif text-base text-forest hover:text-gold transition-colors leading-snug block"
+              >
+                4th Floor, C1 Block, Vaishnavi Symbol,<br />
+                Financial District, Nanakramguda,<br />
+                Hyderabad, Telangana – 500032
+              </a>
+            </div>
+            <div>
+              <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-2">Nisarga Site Office</p>
+              <a
+                href="https://maps.app.goo.gl/n3kFgFqyRdASwSuc6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-serif text-base text-forest hover:text-gold transition-colors leading-snug block"
+              >
+                F6RX+574, Patancheruvu,<br />
+                Hyderabad, Telangana – 502300
+              </a>
+            </div>
+            <div>
+              <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-2">Phone</p>
+              <a href="tel:+919492239339" className="font-serif text-lg text-forest hover:text-gold transition-colors block">+91 94922 39339</a>
+              <a href="tel:+919989990256" className="font-serif text-lg text-forest hover:text-gold transition-colors block">+91 99899 90256</a>
+            </div>
+            <div>
+              <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-2">Email</p>
+              <a href="mailto:srbuildersnisarga@gmail.com" className="font-serif text-base text-forest hover:text-gold transition-colors break-words block">srbuildersnisarga@gmail.com</a>
+            </div>
           </div>
         </FadeInView>
       </section>

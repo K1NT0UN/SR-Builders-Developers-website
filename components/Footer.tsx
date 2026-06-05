@@ -45,10 +45,16 @@ export default function Footer() {
           <div>
             <h4 className="font-serif text-lg text-gold mb-5 tracking-wide">Contact</h4>
             <address className="not-italic space-y-2 text-sm text-parchment/60">
-              <p>Flat No. 109, First Floor, Aparna Green Homes Apartment,</p>
-              <p>Opp. Golf View Apartments, Nanakramguda Rd,</p>
-              <p>Financial District, Nanakramguda,</p>
-              <p>Hyderabad, Telangana – 500032</p>
+              <a
+                href="https://maps.app.goo.gl/4gPbrXw7e8HQVVpS8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:text-parchment transition-colors duration-200"
+              >
+                <p>4th Floor, C1 Block, Vaishnavi Symbol,</p>
+                <p>Financial District, Nanakramguda,</p>
+                <p>Hyderabad, Telangana – 500032</p>
+              </a>
               <a href="tel:+919492239339" className="block hover:text-parchment transition-colors duration-200">+91 94922 39339</a>
               <a href="mailto:srbuildersnisarga@gmail.com" className="block hover:text-parchment transition-colors duration-200">srbuildersnisarga@gmail.com</a>
             </address>

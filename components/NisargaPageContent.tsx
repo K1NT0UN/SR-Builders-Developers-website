@@ -350,11 +350,22 @@ export default function NisargaPageContent() {
           <h2 className="font-serif text-4xl md:text-5xl text-forest mb-4">
             The World of N'finite Kind,<br className="hidden md:block" /> Woven in the Woods.
           </h2>
-          <p className="text-forest/70 text-sm mb-2">RERA: PO22000007723 (T.S. RERA) · CREDAI Member</p>
-          <p className="text-forest/70 text-sm mb-8">
+          <p className="text-forest/70 text-sm mb-2">RERA: P01100010902 (T.S. RERA) · CREDAI Member</p>
+          <p className="text-forest/70 text-sm mb-1">
             <a href="tel:+919492239339" className="hover:text-forest transition-colors">+91 94922 39339</a>
             {' · '}
             <a href="mailto:srbuildersnisarga@gmail.com" className="hover:text-forest transition-colors">srbuildersnisarga@gmail.com</a>
+          </p>
+          <p className="text-forest/50 text-xs mb-8">
+            Site Office:{' '}
+            <a
+              href="https://maps.app.goo.gl/n3kFgFqyRdASwSuc6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-forest transition-colors"
+            >
+              F6RX+574, Patancheruvu, Hyderabad – 502300
+            </a>
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
