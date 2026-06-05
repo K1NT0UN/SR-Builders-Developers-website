@@ -18,7 +18,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-sm leading-relaxed text-parchment/60 max-w-xs">
-              25+ years of excellence in construction and real estate across Hyderabad, Vizag, and Bangalore. A project by SR Builders and Developers.
+              25+ years of excellence in construction and real estate across Hyderabad. A project by SR Builders and Developers.
             </p>
           </div>
 
