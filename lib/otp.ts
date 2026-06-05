@@ -11,6 +11,8 @@ export async function sendOtp(e164Phone: string, recaptchaContainerId = 'recaptc
     recaptchaVerifier.clear()
     recaptchaVerifier = null
   }
+  const container = document.getElementById(recaptchaContainerId)
+  if (container) container.innerHTML = ''
   recaptchaVerifier = new RecaptchaVerifier(auth, recaptchaContainerId, { size: 'invisible' })
   confirmationResult = await signInWithPhoneNumber(auth, e164Phone, recaptchaVerifier)
 }
