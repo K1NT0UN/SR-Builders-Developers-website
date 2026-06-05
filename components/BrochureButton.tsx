@@ -118,7 +118,7 @@ export default function BrochureButton({
               </div>
 
               {/* Form body */}
-              <div className="px-8 py-6 space-y-4">
+              <div className="bg-parchment px-8 py-6 space-y-4">
                 <input
                   className={inputCls}
                   value={name}
