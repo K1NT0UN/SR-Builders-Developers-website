@@ -85,6 +85,9 @@ export default function BrochureButton({
         Download Brochure
       </button>
 
+      {/* Invisible reCAPTCHA mount point for Firebase Phone Auth */}
+      <div id="recaptcha-container" />
+
       <AnimatePresence>
         {open && (
           <motion.div

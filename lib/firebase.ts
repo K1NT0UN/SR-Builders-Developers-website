@@ -1,4 +1,12 @@
-// Firebase Auth replaced by MSG91 server-side OTP. This module is kept as a
-// no-op stub so any legacy imports don't break.
-export const firebaseApp = null
-export const auth = null
+import { initializeApp, getApps } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
+
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+}
+
+export const firebaseApp = getApps().length ? getApps()[0] : initializeApp(firebaseConfig)
+export const auth = getAuth(firebaseApp)
