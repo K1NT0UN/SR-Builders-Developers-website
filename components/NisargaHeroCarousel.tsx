@@ -92,6 +92,17 @@ export default function NisargaHeroCarousel() {
         <p className="text-parchment/60 mt-2 text-sm tracking-wide">
           4 &amp; 5 BHK Forestscape Villas · Patighanpur, Kollur, Hyderabad
         </p>
+        <a
+          href="https://maps.app.goo.gl/n3kFgFqyRdASwSuc6"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-parchment/40 hover:text-gold mt-1 text-xs tracking-wide transition-colors"
+        >
+          <svg className="w-3 h-3 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          Site Office: F6RX+574, Patancheruvu, Hyderabad – 502300
+        </a>
         <div className="mt-8 flex flex-wrap gap-4">
           <BrochureButton
             brochureUrl="/nisarga-brochure.pdf"
