@@ -141,14 +141,18 @@ export default function BrochureButton({
                 />
 
                 {otpSent && (
-                  <input
-                    className={inputCls}
-                    value={otpCode}
-                    onChange={(e) => setOtpCode(e.target.value)}
-                    inputMode="numeric"
-                    placeholder="Enter 6-digit OTP"
-                    autoFocus
-                  />
+                  <div className="bg-gold/15 border border-gold px-4 py-4 space-y-3">
+                    <p className="text-xs tracking-widest uppercase text-forest font-semibold">OTP sent to {COUNTRY_CODE}{tenDigits}</p>
+                    <input
+                      className="w-full bg-gold/10 border border-gold px-4 py-3 text-forest text-center text-xl tracking-[0.5em] font-semibold focus:outline-none focus:bg-gold/20 transition-colors placeholder:tracking-normal placeholder:text-forest/40"
+                      value={otpCode}
+                      onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                      inputMode="numeric"
+                      maxLength={6}
+                      placeholder="— — — — — —"
+                      autoFocus
+                    />
+                  </div>
                 )}
 
                 {error && <p className="text-xs text-red-600">{error}</p>}

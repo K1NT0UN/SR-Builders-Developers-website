@@ -12,31 +12,29 @@ export async function POST(request: Request) {
     const templateId = process.env.MSG91_TEMPLATE_ID
 
     if (!authKey || !templateId) {
-      return NextResponse.json({ error: 'MSG91 is not configured on the server' }, { status: 500 })
+      console.error('MSG91 env vars missing:', { authKey: !!authKey, templateId: !!templateId })
+      return NextResponse.json({ error: 'OTP service not configured' }, { status: 500 })
     }
 
-    // Call MSG91 Send OTP API
-    // Doc: https://docs.msg91.com/p/tf9GtextN
-    const url = `https://control.msg91.com/api/v5/otp?template_id=${templateId}&mobile=${mobile}`
-    
-    const response = await fetch(url, {
+    const response = await fetch('https://control.msg91.com/api/v5/otp', {
       method: 'POST',
       headers: {
         'authkey': authKey,
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ template_id: templateId, mobile }),
     })
 
     const data = await response.json()
+    console.log('MSG91 send response:', data)
 
     if (data.type === 'error') {
-      return NextResponse.json({ error: data.message }, { status: 400 })
+      return NextResponse.json({ error: data.message || 'Failed to send OTP' }, { status: 400 })
     }
 
-    return NextResponse.json({ success: true, message: 'OTP Sent' })
-
+    return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Error sending OTP:', error)
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
+    console.error('OTP send error:', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
