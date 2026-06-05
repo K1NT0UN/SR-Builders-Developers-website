@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 
 const FORMS = {
   brochure: {
-    actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeyZKT_HuN-nWhPimdtMREroQ54FwOqQzzJhyBghXT0y22Xbw/formResponse',
-    fields: { name: 'entry.662210046', mobile: 'entry.1767171215', email: 'entry.1019572093' },
+    actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfmvwbfQcxSJ_uKn6vl-kJnSbp8JkzKTUlRy5ZSFP0HkYibgw/formResponse',
+    fields: { name: 'entry.1790036588', mobile: 'entry.1567757704', email: 'entry.1683077939' },
   },
   enquiry: {
     actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdpMFwF3FozoJTsYJhhiD5rYM0c1HCWsdEY_pi-3hs80V9APQ/formResponse',
