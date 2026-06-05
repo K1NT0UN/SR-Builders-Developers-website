@@ -6,8 +6,8 @@ const FORMS = {
     fields: { name: 'entry.1790036588', mobile: 'entry.1567757704', email: 'entry.1683077939' },
   },
   enquiry: {
-    actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdpMFwF3FozoJTsYJhhiD5rYM0c1HCWsdEY_pi-3hs80V9APQ/formResponse',
-    fields: { name: 'entry.1069233328', mobile: 'entry.1820064998', email: 'entry.763039135' },
+    actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdhswMnIPbmRTTSg7ZLc8RaCQ36caYkUOwdFoA-D5Eeumn2Qw/formResponse',
+    fields: { name: 'entry.1515255903', mobile: 'entry.1653291305', email: 'entry.850337073' },
   },
   siteVisit: {
     actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScJ74LMqHlUJiTRVEpk-W24esO9Ssa3HnDBWxZbUOuJxp3gPQ/formResponse',
