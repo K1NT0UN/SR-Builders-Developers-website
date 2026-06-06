@@ -40,6 +40,6 @@ export const pipelineProjects: Project[] = [
 ]
 
 export const completedProjects: Project[] = [
-  { company: 'SR Builders and Developers', name: "MSR's Serene City", location: 'Miyapur', status: 'COMPLETED', type: 'Residential' },
-  { company: 'SR Builders and Developers', name: 'SM Classic', location: 'Kondapur', status: 'COMPLETED', type: 'Residential' },
+  { company: 'SR Builders and Developers', name: "MSR's Serene City", location: 'Miyapur', status: 'COMPLETED', type: 'Residential', image: '/images/completed/msr-serene-city.png' },
+  { company: 'SR Builders and Developers', name: 'SM Classic', location: 'Kondapur', status: 'COMPLETED', type: 'Residential', image: '/images/completed/sm-classic.png' },
 ]

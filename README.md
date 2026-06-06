@@ -7,7 +7,7 @@
 ## Workspace
 
 Next.js 16 site for SR Builders & Developers, Hyderabad. Flagship project: **Nisarga**.
-Working dir: `~/Desktop/AntiGravity/construction-site/`
+Working dir: `~/Desktop/AntiGravity/SR Builders and Developers website/`
 Live: `srbuildersanddevelopers-k1nt0uns-projects.vercel.app` · Custom domain: `srbuildersanddevelopers.co` (DNS not yet pointed)
 
 ---
@@ -68,7 +68,7 @@ Fonts: **Oswald** (`font-serif`) headings · **Barlow** (`font-sans`) body. Neve
 ## File Structure
 
 ```
-construction-site/
+SR Builders and Developers website/
 ├── app/
 │   ├── globals.css              ← Brand tokens + fonts
 │   ├── layout.tsx               ← Root: Navbar + Footer + FloatingWhatsApp
@@ -185,6 +185,7 @@ All forms go through `/api/lead` → Google Forms (personal Gmail account — wo
 |---|---|
 | `~/Desktop/SRSM Profile/SR B & D Logo/` | Logo source PNG (2000×1545) |
 | `~/Desktop/Nisarga_Brochure_32 in x 12 in_Final_3mm bleed_05-06-26.pdf` | Full Nisarga brochure (28MB) — swapped 2026-06-06 |
+| `~/Desktop/AntiGravity/SR B and D (completed projects images)/` | Completed project photos — drop new images here, then copy to `public/images/completed/` |
 | `~/Desktop/Nisarga_Project_Website_Assets/` | Extracted brochure images |
 | `~/Desktop/Nisarga_Project_Website_Assets/Website_Content_References/website_copy.md` | Verified Nisarga copy |
 | `~/Desktop/AntiGravity/SR-Builders-Hosting-Pitch.html` | Hosting & maintenance pitch |
