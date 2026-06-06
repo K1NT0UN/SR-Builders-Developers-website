@@ -20,7 +20,7 @@ Live: `srbuildersanddevelopers-k1nt0uns-projects.vercel.app` · Custom domain: `
 | Vercel | ✅ Live, auto-deploys on push to `main` |
 | Google Forms | ✅ All 3 recording — Enquiry, Site Visit, Brochure |
 | OTP | ✅ Firebase Phone Auth. Test: `9999999999` / `123456` |
-| Brochure PDF | ✅ `/public/nisarga-brochure.pdf` — gated behind OTP modal |
+| Brochure PDF | ✅ `/public/nisarga-brochure.pdf` — gated behind OTP modal (28MB, updated 2026-06-06) |
 | Supabase | oobbgnvmapsanaqbpzvi.supabase.co — `enquiries` + `media_items` tables, `media` bucket public |
 
 ---
@@ -184,7 +184,7 @@ All forms go through `/api/lead` → Google Forms (personal Gmail account — wo
 | Path | Contents |
 |---|---|
 | `~/Desktop/SRSM Profile/SR B & D Logo/` | Logo source PNG (2000×1545) |
-| `~/Desktop/Nisarga_Brochure_APRL_21_26_.pdf` | Full Nisarga brochure (16MB) |
+| `~/Desktop/Nisarga_Brochure_32 in x 12 in_Final_3mm bleed_05-06-26.pdf` | Full Nisarga brochure (28MB) — swapped 2026-06-06 |
 | `~/Desktop/Nisarga_Project_Website_Assets/` | Extracted brochure images |
 | `~/Desktop/Nisarga_Project_Website_Assets/Website_Content_References/website_copy.md` | Verified Nisarga copy |
 | `~/Desktop/AntiGravity/SR-Builders-Hosting-Pitch.html` | Hosting & maintenance pitch |
