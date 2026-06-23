@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import FadeInView from '@/components/FadeInView'
 import NisargaHeroCarousel from '@/components/NisargaHeroCarousel'
+import EditorialSplit from '@/components/EditorialSplit'
 import NisargaOverviewLightbox from '@/components/NisargaOverviewLightbox'
 import NisargaLandscapeGallery from '@/components/NisargaLandscapeGallery'
 import BrochureButton from '@/components/BrochureButton'
@@ -120,28 +121,16 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      <section className="relative py-36 px-6 overflow-hidden">
-        <Image
-          src="/images/nisarga/arch-streetscape.webp"
-          alt="Nisarga villas — golden hour"
-          fill
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-forest/75" />
-        <div className="relative z-10 max-w-3xl mx-auto text-center">
-          <FadeInView>
-            <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">
-              ImpreSSsion — Structure · Stature · Signature
-            </p>
-            <h2 className="font-serif text-5xl md:text-6xl text-parchment leading-tight mb-6">
-              Architecture That Commands.
-            </h2>
-            <p className="text-parchment/70 leading-relaxed max-w-2xl mx-auto">
-              Some landmarks are built; others evolve. NISARGA belongs to the latter. Its architecture rises with a sense of permanence, inspired by nature, crafted for today, envisioned for every day, and designed to leave an impression that lasts forever. Every angle, every line, every detail speaks of scale and stature — a monument destined to be lived N'finitely.
-            </p>
-          </FadeInView>
-        </div>
-      </section>
+      <EditorialSplit
+        pre="Impre"
+        repeat="S"
+        post="ion"
+        labels={['Structure', 'Stature', 'Signature']}
+        headline="Architecture That Commands."
+        body="Some landmarks are built; others evolve. NISARGA belongs to the latter. Its architecture rises with a sense of permanence, inspired by nature, crafted for today, envisioned for every day, and designed to leave an impression that lasts forever. Every angle, every line, every detail speaks of scale and stature — a monument destined to be lived N'finitely."
+        image={{ src: '/images/nisarga/impression-render.webp', alt: 'Nisarga villas — golden hour' }}
+        imageSide="right"
+      />
 
       <NisargaOverviewLightbox />
 
@@ -204,28 +193,16 @@ export default function NisargaPageContent() {
         </div>
       </section>
 
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
-        <Image
-          src="/images/nisarga/streetscape-rain.webp"
-          alt="Nisarga villa streetscape"
-          fill
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-forest/70" />
-        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-12 text-center">
-          <FadeInView>
-            <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">
-              EleGGGance — Grandeur · Grace · Gravitas
-            </p>
-            <h2 className="font-serif text-5xl md:text-6xl text-parchment leading-tight mb-6">
-              Where Every Villa Is a Statement.
-            </h2>
-            <p className="text-parchment/70 leading-relaxed max-w-2xl mx-auto">
-              Step within and the villa unfolds as an ode to refinement. Sunlight moves with rhythm, breeze carries its cadence, and proportions settle into harmony. Craftsmanship resides in every contour, finesse in every finish — each detail composed as if time were its guest.
-            </p>
-          </FadeInView>
-        </div>
-      </section>
+      <EditorialSplit
+        pre="Ele"
+        repeat="G"
+        post="ance"
+        labels={['Grandeur', 'Grace', 'Gravitas']}
+        headline="Where Every Villa Is a Statement."
+        body="Step within and the villa unfolds as an ode to refinement. Sunlight moves with rhythm, breeze carries its cadence, and proportions settle into harmony. Craftsmanship resides in every contour, finesse in every finish — each detail composed as if time were its guest."
+        image={{ src: '/images/nisarga/elegance-render.webp', alt: 'Nisarga villa streetscape' }}
+        imageSide="left"
+      />
 
       <section className="bg-parchment py-28 px-6">
         <div className="max-w-7xl mx-auto">
