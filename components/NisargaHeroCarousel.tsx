@@ -80,6 +80,18 @@ export default function NisargaHeroCarousel() {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/50 to-transparent z-10" />
 
+      {/* RERA credential — shining gold, just below the navbar */}
+      <div className="absolute top-24 left-0 right-0 z-20 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          <p className="rera-shine text-[10px] md:text-xs tracking-[0.35em] uppercase font-semibold">
+            RERA Approved
+          </p>
+          <p className="rera-shine text-sm md:text-base tracking-[0.25em] font-semibold mt-0.5">
+            P01100010902
+          </p>
+        </div>
+      </div>
+
       {/* Content */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 pb-20 w-full">
         <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">A Project by SR Builders</p>
@@ -87,13 +99,13 @@ export default function NisargaHeroCarousel() {
           The Nisarga
         </h1>
         <p className="text-parchment/80 text-xl md:text-2xl mt-3 font-light">
-          Where Green Meets Grandeur
+          Where Greens Meet Greatness
         </p>
         <p className="text-parchment/60 mt-2 text-sm tracking-wide">
-          4 BHK Forestscape Villas · Patighanpur, Kollur, Hyderabad
+          4 BHK Forestscape Villas · Kollur, Patancheru, Hyderabad
         </p>
         <a
-          href="https://maps.app.goo.gl/n3kFgFqyRdASwSuc6"
+          href="https://maps.app.goo.gl/ohHkRPB9tcTFn6td7"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-parchment/40 hover:text-gold mt-1 text-xs tracking-wide transition-colors"
@@ -101,7 +113,7 @@ export default function NisargaHeroCarousel() {
           <svg className="w-3 h-3 shrink-0" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
           </svg>
-          Site Office: F6RX+574, Patancheruvu, Hyderabad – 502300
+          Site Office: F6RX+9J4, Patancheruvu, Hyderabad – 502300
         </a>
         <div className="mt-8 flex flex-wrap gap-4">
           <BrochureButton

@@ -45,6 +45,7 @@ export default function Footer() {
           <div>
             <h4 className="font-serif text-lg text-gold mb-5 tracking-wide">Contact</h4>
             <address className="not-italic space-y-2 text-sm text-parchment/60">
+              <p className="text-[10px] tracking-[0.3em] uppercase text-gold/60 mb-1">Corporate Office</p>
               <a
                 href="https://maps.app.goo.gl/4gPbrXw7e8HQVVpS8"
                 target="_blank"
@@ -68,8 +69,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 pt-6 border-t border-parchment/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-parchment/30 tracking-wide">
-          <p>© {new Date().getFullYear()} SRSM Group. All rights reserved.</p>
-          <p>SR Builders &amp; Developers · SM Builders · SM Builders and Developers</p>
+          <p>© {new Date().getFullYear()} SR Builders &amp; Developers. All rights reserved.</p>
+          <p>SR Builders &amp; Developers · RERA P01100010902</p>
         </div>
       </div>
     </footer>

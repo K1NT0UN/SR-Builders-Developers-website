@@ -280,7 +280,7 @@ export default function NisargaPageContent() {
               <p className="text-xs tracking-[0.5em] uppercase text-gold mb-4">Where You'll Find Us</p>
               <h2 className="font-serif text-4xl md:text-5xl text-parchment">Location Highlights</h2>
               <p className="text-parchment/50 text-sm mt-3 max-w-xl mx-auto">
-                Survey No 155, Bahirdurpally, Bachupally–Kompally Main Road, Hyderabad – 500 043
+                Kollur, Patancheru, Hyderabad, Telangana – 502300
               </p>
             </div>
           </FadeInView>
@@ -327,7 +327,7 @@ export default function NisargaPageContent() {
           <h2 className="font-serif text-4xl md:text-5xl text-forest mb-4">
             The World of N'finite Kind,<br className="hidden md:block" /> Woven in the Woods.
           </h2>
-          <p className="text-forest/70 text-sm mb-2">RERA: P01100010902 (T.S. RERA) · CREDAI Member</p>
+          <p className="text-forest/70 text-sm mb-2">RERA: P01100010902 · T.S. RERA</p>
           <p className="text-forest/70 text-sm mb-1">
             <a href="tel:+919492239339" className="hover:text-forest transition-colors">+91 94922 39339</a>
             {' · '}
@@ -336,12 +336,12 @@ export default function NisargaPageContent() {
           <p className="text-forest/50 text-xs mb-8">
             Site Office:{' '}
             <a
-              href="https://maps.app.goo.gl/n3kFgFqyRdASwSuc6"
+              href="https://maps.app.goo.gl/ohHkRPB9tcTFn6td7"
               target="_blank"
               rel="noopener noreferrer"
               className="underline hover:text-forest transition-colors"
             >
-              F6RX+574, Patancheruvu, Hyderabad – 502300
+              F6RX+9J4, Patancheruvu, Hyderabad – 502300
             </a>
           </p>
           <div className="flex flex-wrap justify-center gap-4">

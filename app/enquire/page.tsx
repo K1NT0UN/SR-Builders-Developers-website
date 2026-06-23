@@ -46,12 +46,12 @@ export default function EnquirePage() {
             <div>
               <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-2">Nisarga Site Office</p>
               <a
-                href="https://maps.app.goo.gl/n3kFgFqyRdASwSuc6"
+                href="https://maps.app.goo.gl/ohHkRPB9tcTFn6td7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-serif text-base text-forest hover:text-gold transition-colors leading-snug block"
               >
-                F6RX+574, Patancheruvu,<br />
+                F6RX+9J4, Patancheruvu,<br />
                 Hyderabad, Telangana – 502300
               </a>
             </div>
