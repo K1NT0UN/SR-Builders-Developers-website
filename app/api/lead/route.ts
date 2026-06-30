@@ -41,8 +41,9 @@ export async function POST(req: NextRequest) {
   for (const [key, entryId] of Object.entries(config.fields)) {
     let value = (data as Record<string, string>)[key]
     if (!value) continue
-    // Google Forms rejects E.164 format — strip country code prefix
-    if (key === 'mobile') value = value.replace(/^\+\d{1,3}/, '')
+    // Google Forms rejects E.164 format — keep just the 10-digit national number
+    // (the old /^\+\d{1,3}/ was greedy and ate the mobile's first digit, e.g. +919000543635 -> 000543635)
+    if (key === 'mobile') value = value.replace(/\D/g, '').slice(-10)
     // Date fields (YYYY-MM-DD) must be split into _year/_month/_day parts
     if ((key === 'date1' || key === 'date2') && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
       const [year, month, day] = value.split('-')
