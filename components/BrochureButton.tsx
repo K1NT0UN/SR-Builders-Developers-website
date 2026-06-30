@@ -37,14 +37,6 @@ export default function BrochureButton({
     a.remove()
   }
 
-  async function finish() {
-    await submitBrochure({ name: name.trim(), mobile: e164, email: email.trim() || undefined })
-    triggerDownload()
-    resetOtp()
-    setOpen(false)
-    setName(''); setMobile(''); setEmail(''); setOtpSent(false); setOtpCode(''); setError('')
-  }
-
   async function handleSend() {
     setError('')
     if (!name.trim()) return setError('Please enter your name.')
@@ -63,14 +55,29 @@ export default function BrochureButton({
   async function handleVerify() {
     setError('')
     setBusy(true)
+
+    // 1) Verify the OTP. A failure here genuinely means a wrong/expired code.
     try {
       await verifyOtp(otpCode)
-      await finish()
     } catch {
       setError('Incorrect or expired code.')
-    } finally {
       setBusy(false)
+      return
     }
+
+    // 2) OTP is valid — record the lead best-effort, but never deny the
+    //    brochure if recording fails (that's our problem, not the user's).
+    try {
+      await submitBrochure({ name: name.trim(), mobile: e164, email: email.trim() || undefined })
+    } catch (err) {
+      console.error('Brochure lead submission failed:', err)
+    }
+
+    triggerDownload()
+    resetOtp()
+    setOpen(false)
+    setName(''); setMobile(''); setEmail(''); setOtpSent(false); setOtpCode(''); setError('')
+    setBusy(false)
   }
 
   const inputCls =

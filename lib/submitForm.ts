@@ -1,9 +1,10 @@
 async function submitLead(form: string, data: Record<string, string | undefined>): Promise<void> {
-  await fetch('/api/lead', {
+  const res = await fetch('/api/lead', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ form, data }),
   })
+  if (!res.ok) throw new Error(`Lead submission failed (${res.status})`)
 }
 
 export async function submitEnquiry(data: { name: string; mobile: string; email?: string }): Promise<void> {

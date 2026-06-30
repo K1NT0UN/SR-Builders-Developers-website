@@ -65,12 +65,22 @@ export async function POST(req: NextRequest) {
   body.append('submissionTimestamp', Date.now().toString())
 
   console.log(`[lead] form=${form} fbzx=${fbzx} body=${body.toString()}`)
-  const res = await fetch(config.actionUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: body.toString(),
-  })
+  let res: Response
+  try {
+    res = await fetch(config.actionUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+    })
+  } catch (err) {
+    console.error('[lead] google submit network error:', err)
+    return NextResponse.json({ ok: false, error: 'network' }, { status: 502 })
+  }
   console.log(`[lead] google response status=${res.status}`)
 
-  return NextResponse.json({ ok: res.ok, status: res.status })
+  // Surface real failures instead of always returning 200 (was hiding dropped leads)
+  if (!res.ok) {
+    return NextResponse.json({ ok: false, status: res.status }, { status: 502 })
+  }
+  return NextResponse.json({ ok: true })
 }
