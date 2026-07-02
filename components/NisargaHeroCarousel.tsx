@@ -5,11 +5,31 @@ import Image from 'next/image'
 import Link from 'next/link'
 import BrochureButton from '@/components/BrochureButton'
 
-const heroImages = [
-  '/images/nisarga/hero-1.jpg',
-  '/images/nisarga/hero-2.jpg',
-  '/images/nisarga/hero-3.jpg',
-  '/images/nisarga/hero-7.jpg',
+const heroSlides = [
+  {
+    desktop: '/images/nisarga/hero-1-desktop.webp',
+    tablet:  '/images/nisarga/hero-1-tablet.webp',
+    phone:   '/images/nisarga/hero-1-phone.webp',
+    alt:     'Nisarga — entrance gate',
+  },
+  {
+    desktop: '/images/nisarga/hero-2-desktop.webp',
+    tablet:  '/images/nisarga/hero-2-tablet.webp',
+    phone:   '/images/nisarga/hero-2-phone.webp',
+    alt:     'Nisarga — entrance porch',
+  },
+  {
+    desktop: '/images/nisarga/hero-3-desktop.webp',
+    tablet:  '/images/nisarga/hero-3-tablet.webp',
+    phone:   '/images/nisarga/hero-3-phone.webp',
+    alt:     'Nisarga — Club Nspire clubhouse',
+  },
+  {
+    desktop: '/images/nisarga/hero-7-desktop.webp',
+    tablet:  '/images/nisarga/hero-7-tablet.webp',
+    phone:   '/images/nisarga/hero-7-phone.webp',
+    alt:     'Nisarga — villa streetscape',
+  },
 ]
 
 // Per-slide activation counter so Ken Burns restarts cleanly on each show
@@ -22,7 +42,7 @@ function useSlideKeys(count: number) {
 
 export default function NisargaHeroCarousel() {
   const [current, setCurrent] = useState(0)
-  const [keys, activate] = useSlideKeys(heroImages.length)
+  const [keys, activate] = useSlideKeys(heroSlides.length)
   const currentRef = useRef(current)
   currentRef.current = current
 
@@ -30,7 +50,7 @@ export default function NisargaHeroCarousel() {
     // Activate Ken Burns on first slide immediately
     activate(0)
     const timer = setInterval(() => {
-      const next = (currentRef.current + 1) % heroImages.length
+      const next = (currentRef.current + 1) % heroSlides.length
       setCurrent(next)
       activate(next)
     }, 5000)
@@ -45,9 +65,9 @@ export default function NisargaHeroCarousel() {
 
   return (
     <section className="relative min-h-screen flex items-end overflow-hidden">
-      {heroImages.map((src, i) => (
+      {heroSlides.map((slide, i) => (
         <div
-          key={src}
+          key={slide.desktop}
           className="absolute inset-0"
           style={{
             opacity: i === current ? 1 : 0,
@@ -59,26 +79,37 @@ export default function NisargaHeroCarousel() {
           <div
             key={keys[i]}
             className="absolute inset-0"
-            style={
-              keys[i] > 0
-                ? { animation: 'kenburns 7s ease-out forwards' }
-                : undefined
-            }
+            style={keys[i] > 0 ? { animation: 'kenburns 7s ease-out forwards' } : undefined}
           >
-            <Image
-              src={src}
-              alt={`Nisarga — view ${i + 1}`}
-              fill
-              className="object-cover object-center"
-              priority={i < 2}
-              sizes="100vw"
-            />
+            {/* picture serves the correctly composed image per breakpoint — not a crop */}
+            <picture>
+              <source media="(max-width: 767px)"  srcSet={slide.phone}   type="image/webp" />
+              <source media="(max-width: 1023px)" srcSet={slide.tablet}  type="image/webp" />
+              <img
+                src={slide.desktop}
+                alt={slide.alt}
+                loading={i < 2 ? 'eager' : 'lazy'}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+            </picture>
           </div>
         </div>
       ))}
 
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/50 to-transparent z-10" />
+
+      {/* Nisarga project logo — top right, below navbar, hidden on mobile */}
+      <div className="absolute top-24 right-8 z-20 hidden md:block">
+        <Image
+          src="/images/nisarga/nisarga-logo.png"
+          alt="The Nisarga — Where Greens Meet Greatness"
+          width={120}
+          height={120}
+          className="opacity-90 drop-shadow-2xl"
+          priority
+        />
+      </div>
 
       {/* RERA credential — shining gold, just below the navbar */}
       <div className="absolute top-24 left-0 right-0 z-20 px-6 lg:px-12">
@@ -138,7 +169,7 @@ export default function NisargaHeroCarousel() {
 
       {/* Dot indicators */}
       <div className="absolute bottom-8 right-12 z-20 flex gap-2 items-center">
-        {heroImages.map((_, i) => (
+        {heroSlides.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
