@@ -104,9 +104,9 @@ export default function NisargaHeroCarousel() {
         <Image
           src="/images/nisarga/nisarga-logo.png"
           alt="The Nisarga — Where Greens Meet Greatness"
-          width={120}
-          height={120}
-          className="opacity-90 drop-shadow-2xl"
+          width={128}
+          height={128}
+          className="rounded-full ring-1 ring-gold/40 opacity-95 drop-shadow-[0_8px_22px_rgba(0,0,0,0.55)] transition-transform duration-500 hover:scale-105"
           priority
         />
       </div>
